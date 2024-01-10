@@ -23,10 +23,9 @@
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-left: 2%;">
           <li><a href="{{ url_for('home.index') }}" class="nav-link px-2 text-body-emphasis ">Home</a></li>
-          <li><a href="#" class="nav-link px-2 text-body-emphasis">Features</a></li>
           <li><a href="{{ url_for('course.courses') }}" class="nav-link px-2 text-body-emphasis">Course</a></li>
-          <li><a href="#" class="nav-link px-2 text-body-emphasis">FAQs</a></li>
-          <li><a href="#" class="nav-link px-2 text-body-emphasis">About</a></li>
+          <li><a href="{{ url_for('LearningForum.forum') }}" class="nav-link px-2 text-body-emphasis">Learning Forum</a></li>
+          <li><a href="{{ url_for('Publicquestion.question', filename='') }}" class="nav-link px-2 text-body-emphasis">Release Question</a></li>
         </ul>
 
         <div class="text-end">

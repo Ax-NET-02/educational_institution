@@ -1,33 +1,46 @@
 main {
-    width: 100%;
-    overflow-x: hidden; /* 禁止水平滚动 */
+  width: 100%;
+  overflow-x: hidden;
+  /* 禁止水平滚动 */
 }
 
 .line {
-    border-top: 2px solid rgb(102, 102, 102); /* 修改颜色 */
-    width: 100%;
-    margin: 20px 0;
+  border-top: 2px solid rgb(102, 102, 102);
+  /* 修改颜色 */
+  width: 100%;
+  margin: 20px 0;
 }
 
-  /* 返回顶部按钮样式 */
-  .back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: none;
-    width: 40px;
-    height: 40px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 20px;
-    text-align: center;
-    line-height: 40px;
-    z-index: 9999;
-    transition: background-color 0.3s, transform 0.3s;
-  }
-  .back-to-top:hover {
-    background-color: #0056b3;
-  }
+/* 返回顶部按钮样式 */
+.back-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: none;
+  width: 40px;
+  height: 40px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  text-align: center;
+  line-height: 40px;
+  z-index: 9999;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.back-to-top:hover {
+  background-color: #0056b3;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(88, 97, 102);
+}
+
+a:hover {
+  text-decoration: none;
+  color: rgb(58, 197, 197);
+}

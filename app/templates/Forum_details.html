@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
+type="image/x-icon"{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/Forum_details.css') }}">
+{% endblock %}
+
+{% block body %}
+    <main>
+        <div class="row" style="margin-top: 101px;">
+            <div class="col"></div>
+            <div class="col-10" style="background-color: #fff;padding: 20px;">
+                <h3 class="page-title">中二病也要谈恋爱</h3>
+                <p class="question-info">
+                    <span>小岛游六花-</span>
+                    <span>时间: 2024-4-10</span>
+                </p>
+                <hr>
+                <p class="question-content">爆ぜろリアル！弾けろシナプス！ パニッシュメント ディス、ワールド！</p>
+                <hr>
+                <h5 class="comment-group-title">评论 (1)：</h5>
+                <form action="" method="post">
+                    <div class="form-group">
+                        <input type="text" placeholder="请填写评论" name="content" class="form-control">
+                        <input type="hidden" name="question_id" value="">
+                    </div>
+                    <div class="form-group" style="text-align: right;">
+                        <button class="btn btn-primary">评论</button>
+                    </div>
+                </form>
+                <hr>
+                <ul class="comment-group">
+                    <li>
+                        <div class="user-info">
+                            <img class="avatar" src="{{ url_for('static', filename='images/avatar/2.jpeg') }}" alt="头像">
+                            <span class="username">小岛游六花</span>
+                            <span class="create-time">2024-4-10</span>
+                        </div>
+                        <p class="comment-content">666</p>
+                    </li>
+                </ul>
+            </div>
+            <div class="col"></div>
+        </div>
+    </main>
+{% endblock %}

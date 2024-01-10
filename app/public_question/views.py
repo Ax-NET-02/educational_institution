@@ -4,9 +4,9 @@ import MySQLdb.cursors
 from datetime import date, datetime, timedelta
 from pytz import timezone
 
-register = Blueprint('register', __name__)
+Publicquestion = Blueprint('Publicquestion', __name__)
 
 
-@register.route('/register')
-def Get_register():
-    return render_template('register.html')
+@Publicquestion.route('/public_question')
+def question():
+    return render_template('public_question.html')

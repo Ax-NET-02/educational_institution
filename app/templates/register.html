@@ -1,42 +1,78 @@
-<!doctype html>
-<html lang="en" data-bs-theme="auto">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-  <script src="{{ url_for('static', filename='js/color-modes.js') }}"></script>
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="">
-  <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
-  <meta name="generator" content="Hugo 0.122.0">
-  <title>Login</title>
-  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
-  <link href="{{ url_for('static', filename='css/sign-in.css') }}" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap5.0.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/groups.css') }}">
+  <title>Sign up</title>
 </head>
 
-<body class="d-flex align-items-center py-4 bg-body-tertiary">
-  <main class="form-signin w-100 m-auto">
-    <form>
-      <img class="mb-4" src="{{ url_for('static', filename='brand/bootstrap-logo.svg') }}" alt="" width="72"
-        height="57">
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+    /* 在交叉轴上垂直居中 */
+    justify-content: center;
+    /* 在主轴上水平居中 */
+  }
+</style>
 
-      <div class="form-floating">
-        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-        <label for="floatingInput">Email address</label>
+<body>
+  <div class="modal modal-sheet position-static d-block bg-body-secondary p-3 py-md-0" tabindex="-1" role="dialog"
+    id="modalSignin">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-5 shadow shadow-lg p-4 bg-body-tertiary rounded">
+        <div class="modal-header p-4 pb-4 border-bottom-0">
+          <h1 class="fw-bold mb-0 fs-2 container">Sign up</h1>
+        </div>
+
+        <form method="POST" action="{{ url_for('register.Get_register')}}">
+          <div class="modal-body p-5 pt-0">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control rounded-3" id="email" placeholder="email" name="email">
+              <label for="email">Email</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="username" class="form-control rounded-3" id="username" placeholder="username" name="username">
+                <label for="username">Username</label>
+              </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control rounded-3" id="password" placeholder="password"
+                name="password">
+              <label for="password">Password</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="confirm_password" class="form-control rounded-3" id="confirm_password" placeholder="confirm_password"
+                  name="confirm_password">
+                <label for="confirm_password">Confirm Password</label>
+              </div>
+            <div class="form-floating mb-3">
+                <input type="telephone_number" class="form-control rounded-3" id="telephone_number" placeholder="telephone_number"
+                  name="telephone_number">
+                <label for="telephone_number">Telephone Number</label>
+              </div>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+            <div style="margin-top: 1%;">
+              <small class="text-body-secondary">
+                <span>Already have an account?</span>
+                <span><a href="{{ url_for('login.Get_login') }}" class="fw-bold">Log in</a></span>
+
+                <p style="margin-top: 1%;"><span>Can't find a home?</span><a href="{{ url_for('home.index') }}" class="fw-bold" style="margin-left: 1%;">return to home page</a></p>
+              </small>
+            </div>
+            <hr class="my-4">
+          </div>
+        </form>
       </div>
-      <div class="form-floating">
-        <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-        <label for="floatingPassword">Password</label>
-      </div>
-
-      <button class="btn btn-primary" type="submit">Sign in</button>
-    </form>
-  </main>
-  <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
-
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap5.0.js') }}"></script>
 </body>
 
 </html>
