@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <title>Home</title>
+        <!-- Required meta tags -->
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+
+        <!-- Bootstrap CSS v5.2.1 -->
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+            crossorigin="anonymous"
+        />
+
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+    </head>
+
+      <!-- 加载遮罩层 -->
+      <div id="loading-overlay">
+          <p id="loading-text">Loading...</p>
+      </div>
+  
+      <!-- 主页内容 -->
+      <div id="main-content" style="display: none;">
+          <!-- 在这里放置您的主页内容 -->
+          <header class="p-3 bg-white border-bottom border-black">
+            <div class="container">
+              <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                    <a href="/"><svg viewBox="0 0 930 270" width="140px" height="100%"><g fill="none" fill-rule="evenodd"><path d="M14.5 184.541c9.832-32.9 40.063-55.468 74.4-55.541h93.58c33.58.074 63.325 21.677 73.783 53.586-20.007 48.888-67.41 80.985-120.231 81.412C83.21 264.426 35.295 233.1 14.5 184.541z" stroke="#292933" stroke-width="8" fill="#525E66" fill-rule="nonzero"></path><path d="M55.499 238.589a9.36 9.36 0 018.2-4.589h46.5c14.08 0 25.5 14.369 25.5 28.448V259.5c0-14.083 11.417-25.5 25.5-25.5h46.5a9.359 9.359 0 018.2 4.589 130.434 130.434 0 01-80.2 27.411 130.437 130.437 0 01-80.2-27.411h0z" stroke="#292933" stroke-width="8" fill="#BAC0CC" fill-rule="nonzero"></path><g transform="translate(40 30)"><path d="M192 109c0 9.389-7.611 17-17 17H17c-9.389 0-17-7.611-17-17h0c0-9.389 7.611-17 17-17h158c9.389 0 17 7.611 17 17z" fill="#BAC0CC" fill-rule="nonzero" stroke="#292933" stroke-linecap="round" stroke-linejoin="round" stroke-width="10"></path><path d="M96 0a81 81 0 00-81 81.006V121c0 30.928 25.072 56 56 56h50c30.928 0 56-25.072 56-56V81A81 81 0 0095.994 0H96z" stroke="#292933" stroke-width="10" fill="#525E66" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round"></path><path d="M157 100c0-20.432-16.562-36.997-36.994-37H72c-17.84-.005-33.143 12.721-36.391 30.263-3.249 17.541 6.482 34.903 23.141 41.287 3.595 17.717 19.172 30.451 37.25 30.451s33.655-12.734 37.25-30.451A37.011 37.011 0 00157 100h0z" stroke="#292933" stroke-width="10" fill="#BAC0CC" fill-rule="nonzero" stroke-linecap="round" stroke-linejoin="round"></path><circle fill="#292933" fill-rule="nonzero" cx="70" cy="104" r="8"></circle><circle fill="#292933" fill-rule="nonzero" cx="122" cy="104" r="8"></circle><path d="M81 121h0a9 9 0 019-9h12a9 9 0 019 9h0" stroke="#292933" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"></path><path stroke="#FFF" stroke-width="20" opacity="0.3" stroke-linecap="round" stroke-linejoin="round" d="M81 31h30"></path><circle fill="#292933" fill-rule="nonzero" cx="89.5" cy="122.5" r="3.5"></circle><circle fill="#292933" fill-rule="nonzero" cx="102.5" cy="122.5" r="3.5"></circle><path d="M78.69 139a19.982 19.982 0 0034.62 0" stroke="#292933" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"></path></g><circle cx="135" cy="135" r="135"></circle><circle stroke="#292933" stroke-width="12" cx="135" cy="135" r="129"></circle><g><path d="M368.438 84.047V23.891H436.8v45.938c-.365 9.48-4.193 14.219-11.484 14.219h-11.488v4.922h22.422v15.313h-22.422v7.656H435.7v15.311h-21.872v7.109H436.8v14.766h-70v-14.766h28.981v-7.109h-27.343v-15.312h27.343v-7.656h-9.843l-1.094 1.641c-1.459 2.551-4.922 3.644-10.391 3.277H366.8V93.891c5.104.365 8.02-.364 8.75-2.187l2.188-4.375h14.215l-.547 1.641h4.375v-4.922l-27.343-.001zm50.312-38.281v-7.109h-32.266v7.109h32.266zm0 20.781v-5.469h-32.266v7.109h30.625c.727 0 1.274-.546 1.641-1.64zM313.2 23.891h21.878l8.75 12.578 4.372-12.578h18.6l-8.753 33.359v78.2a14.562 14.562 0 01-3.828 9.85 18.981 18.981 0 01-10.937 3.828h-30.626v-15.862h24.063c.73 0 1.276-.547 1.641-1.641v-18.047a3.577 3.577 0 00-1.641-1.641H313.2V94.984h24.066c.73 0 1.276-.547 1.641-1.641V78.578a3.577 3.577 0 00-1.641-1.641H313.2V59.984h25.159L313.2 23.891zm166.254.547h49.766v45.938c-.365 5.104-2.552 8.568-6.562 10.391 4.377 1.822 6.747 5.466 7.112 10.933v39.925c.365 7.656-3.281 11.302-10.937 10.938H498.6v6.016h-19.142l-.004-124.141zm53.594 17.5v-17.5h68.906v17.5h-68.906zM498.6 73.109h8.75c1.823.365 2.734-.729 2.734-3.281V41.391H498.6v31.718zm34.453 3.281V57.8h68.906v18.594H577.9V136c.365 8.385-2.917 12.213-9.844 11.484h-14.223v-16.406h2.734c1.458.365 2.187-.547 2.188-2.734V76.391l-25.702-.001zm-1.642 54.141h2.734c.73.365 1.459-.547 2.188-2.734l5.469-43.2h15.859l-6.016 51.95c-.365 6.2-2.917 9.117-7.656 8.75h-12.578v-14.766zm52.5 4.922l-3.828-50.859h15.859l3.281 43.2c.365 2.187 1.094 3.099 2.188 2.734h1.641V145.3H594.3c-7.29.363-10.754-2.92-10.389-9.847zM498.6 127.25h8.75c2.187.365 3.281-.729 3.281-3.281V93.891c0-2.552-.911-3.828-2.734-3.828h-9.3l.003 37.187zm204.534-66.172V45.219h2.188c2.187.365 3.646-.729 4.375-3.281l4.922-19.141h18.594l-2.187 8.2h34.453V46.31h-37.736l-2.187 9.3c-1.823 3.646-5.104 5.469-9.844 5.469l-12.578-.001zM704.228 66H726.1l7.109 16.406 7.656-25.156h22.425l-18.047 50.859 9.3 21.328c1.459 4.01 3.464 5.834 6.016 5.469h5.469v14.766h-16.957c-4.01 0-7.292-2.37-9.844-7.109l-4.922-8.2-4.375 8.75a10.534 10.534 0 01-9.3 6.563h-18.043v-14.223h6.563c2.552 0 4.557-1.64 6.016-4.922l7.656-21.875L704.228 66zm-66.172-21.328V28.813h23.516v-7.656h18.594v8.2h21.328V44.67h-21.329V57.8h21.328v15.859h-33.906l-1.641 6.016h32.266v16.953l-4.375 8.2h7.656v15.859h-8.2v8.75c0 11.302-4.922 16.953-14.766 16.953h-34.456v-14.765h27.344c2.187 0 3.281-1.094 3.281-3.281v-7.656h-36.64v-15.86h35l4.922-9.3h-16.407c-2.552 2.187-6.016 3.281-10.391 3.281h-13.124v-16.95h2.734c1.459 0 2.917-.911 4.375-2.734l1.641-5.469h-8.75V57.8h23.516V44.672h-23.516zm166.254-.547V27.719h52.5V22.25h20.234v5.469h52.5v16.406h-87.5l-7.656 7.109h69.453c2.187.365 3.281-.364 3.281-2.187v-2.734h20.234v8.2c1.823 9.48-3.28 13.31-15.312 11.487H809.232V52.328l7.656-8.2-12.578-.003zm-.547 105v-14.219h3.281c1.823.365 2.734-1.094 2.734-4.375V72.563h117.579v56.875c.73 13.49-4.375 19.687-15.312 18.594H859v-14.219h43.2c2.187.73 3.281-.182 3.281-2.734V127.8h-75.468v6.016c.73 10.937-4.557 16.042-15.859 15.313l-10.391-.004zM905.482 92.8v-6.016h-75.469V92.8h75.469zm0 20.781v-6.562h-75.469v6.563l75.469-.001zM322.531 243h-10.687l18.844-52.031h13.218L362.188 243h-11.25L347 232.031h-20.531L322.531 243zm6.75-19.687h14.907l-7.032-22.219h-.281l-7.594 22.219zM378.5 243h-10.969v-52.031h16.032c14.062-.187 21.093 5.156 21.093 16.031-.375 10.125-6.375 15.469-18 16.031H378.5V243zm0-43.312v14.625c.563 0 1.688.094 3.375.281 7.5.75 11.156-1.781 10.969-7.594 0-5.063-3.656-7.5-10.969-7.312-1.116.2-2.259.2-3.375 0zM410.844 243v-52.031h34.875v8.719h-23.625v12.094h21.938v8.718h-21.938v13.781h24.469V243h-35.719zm79.031-52.031h11.25v32.625c-.563 12.937-8.063 19.594-22.5 19.969-14.813-.375-22.406-7.032-22.781-19.969v-32.625h11.25v28.406c-.75 11.625 3.094 17.157 11.531 16.594 8.063.563 11.813-4.969 11.25-16.594v-28.406zm32.063 15.75v4.219l.281.281c1.875-3.375 5.532-5.156 10.969-5.344 6.375.937 10.312 3.562 11.812 7.875.375 2.25.657 4.125.844 5.625V243h-10.969v-21.656c-.187-5.437-2.344-8.25-6.469-8.437-3.937.375-6.094 3.188-6.469 8.438V243H511.25v-36.281h10.688zm32.906 0h10.969V243h-10.969v-36.281zm-.281-15.75h11.531v9.281h-11.531v-9.281zM594.5 243v-52.031h34.875v8.719H605.75v12.094h21.938v8.718H605.75v13.781h24.469V243H594.5zm53.719-18c-.187 8.063 2.438 12 7.875 11.813 4.5-.187 7.031-4.125 7.594-11.812-.563-7.687-3.094-11.719-7.594-12.094-5.437 0-8.062 4.03-7.875 12.093zm15.469-14.062v-19.969h10.969v44.719c-.195 2.44-.1 4.894.281 7.312h-10.969c-.03-.85-.124-1.696-.281-2.531a5.748 5.748 0 010-2.531c-2.25 3.562-5.906 5.437-10.969 5.625-9.75-.375-15-6.563-15.75-18.563.563-12 6.188-18.375 16.875-19.125a13.108 13.108 0 019.844 5.063zM707 243l-.562-4.5c-2.438 3.375-6.094 5.063-10.969 5.063-6.563-.375-10.594-2.907-12.094-7.594a13.03 13.03 0 01-.562-5.625v-23.625H693.5v21.938c.187 5.625 2.344 8.344 6.469 8.156 3.937-.375 6.094-3.093 6.469-8.156v-21.938h10.969v29.812a10.126 10.126 0 000 3.375c.163 1.024.256 2.058.281 3.094H707zm49.5-23.344h-10.687c-.563-4.313-2.438-6.563-5.625-6.75-2.813 0-4.406 3.469-4.781 10.406v2.531c.187 7.5 1.875 11.156 5.063 10.969 3.375 0 5.157-2.344 5.344-7.031H756.5c-.75 9-6.094 13.594-16.031 13.782-10.125-.375-15.563-6.563-16.313-18.563.75-12 6.188-18.375 16.313-19.125 10.125.563 15.468 5.156 16.031 13.781zm26.156 6.469c-7.687-.375-11.531 1.5-11.531 5.625 0 3.187 1.781 4.875 5.344 5.063 4.125.187 6.187-3.375 6.187-10.688zm-9.844-9h-10.406c.187-4.125 1.875-7.125 5.063-9 2.437-1.313 6-2.063 10.688-2.25 9.937.187 15 4.687 15.188 13.5v21.094c.273.822.461 1.67.561 2.531h-9.562a22.078 22.078 0 01-.562-4.781c-2.25 3.563-6.001 5.344-11.251 5.344-7.687-.375-11.625-3.844-11.812-10.407a12.821 12.821 0 017.875-11.531c3.187-1.313 7.875-1.969 14.063-1.969v-3.375a5.072 5.072 0 00-5.062-4.5c-2.813.188-4.407 1.97-4.782 5.344h-.001zm25.031-10.406h7.313v-7.031l10.969-3.937v10.969H824v7.313h-7.875v16.875c-.563 4.5.844 6.469 4.219 5.906a8.287 8.287 0 003.656-.283V243c-3 .187-5.906.375-8.719.563-7.125.187-10.5-3.75-10.125-11.813v-17.719h-7.312l-.001-7.312zm32.344 0h10.969V243h-10.968l-.001-36.281zm-.281-15.75h11.531v9.281h-11.531v-9.281zM886.438 225c-.563 12-6.844 18.188-18.844 18.563-12.187-.375-18.469-6.563-18.844-18.563.375-12.187 6.657-18.562 18.844-19.125 12 .563 18.281 6.938 18.844 19.125zM860 225c-.187 8.063 2.344 12 7.594 11.813 5.25.187 7.875-3.75 7.875-11.812s-2.625-12.093-7.875-12.094c-5.25 0-7.781 4.03-7.594 12.093zm45-18.281v4.219l.281.281c1.875-3.375 5.532-5.156 10.969-5.344 6.375.937 10.313 3.562 11.813 7.875.375 2.25.657 4.125.844 5.625V243h-10.969v-21.656c-.187-5.437-2.344-8.25-6.469-8.437-3.937.375-6.094 3.188-6.469 8.438V243h-10.687v-36.281H905z" fill="#333" fill-rule="nonzero"></path><path stroke="#333" stroke-width="4" d="M311.5 171.5h616"></path></g></g></svg></a>
+        
+                <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-left: 2%;">
+                  <li><a href="#" class="nav-link px-2 text-body-emphasis ">Home</a></li>
+                  <li><a href="#" class="nav-link px-2 text-body-emphasis">Features</a></li>
+                  <li><a href="#" class="nav-link px-2 text-body-emphasis">Pricing</a></li>
+                  <li><a href="#" class="nav-link px-2 text-body-emphasis">FAQs</a></li>
+                  <li><a href="#" class="nav-link px-2 text-body-emphasis">About</a></li>
+                </ul>
+                     
+                <div class="text-end">
+                  <button type="button" class="btn btn-outline-secondary me-2">Login</button>
+                  <button type="button" class="btn btn-warning">Sign-up</button>
+                </div>
+              </div>
+            </div>
+          </header>
+        <main>
+        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item active">
+               <!--image change new path -->
+              <img src="{{ url_for('static', filename='images/cs.png') }}" class="d-block w-100" alt="Movie Image1" style="width: 800px; height: 460px;">
+            </div>
+            <div class="carousel-item">
+               <!--image change new path -->
+              <img src="{{ url_for('static', filename='images/web_vip_banner.jpg') }}" class="d-block w-100" alt="Movie Image2" style="width: 1200px; height: 460px;">
+            </div>
+            <div class="carousel-item">
+               <!--image change new path -->
+              <img src="{{ url_for('static', filename='images/IMG.png') }}" class="d-block w-100" alt="Movie Image3" style="width: 1200px; height: 460px;">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        </main>
+        <footer>
+            <!-- place footer here -->
+        </footer>
+      </div>
+
+    <body>
+        <!-- Bootstrap JavaScript Libraries -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+            integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+            crossorigin="anonymous"
+        ></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+            integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+            crossorigin="anonymous"
+        ></script>
+
+        <script src="{{ url_for('static', filename='js/home.js') }}"></script>
+    </body>
+</html>
