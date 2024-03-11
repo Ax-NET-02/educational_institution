@@ -69,3 +69,7 @@ CREATE TABLE IF NOT EXISTS messages (
 
 
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
