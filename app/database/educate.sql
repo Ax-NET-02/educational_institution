@@ -17,8 +17,8 @@ CREATE TABLE IF NOT EXISTS permissions (
 CREATE TABLE IF NOT EXISTS customer_service (
     service_id INT PRIMARY KEY AUTO_INCREMENT,
     service_name VARCHAR(50) NOT NULL,
-    password VARCHAR(255) NOT NULL,
-    email VARCHAR(50) NOT NULL,
+    service_password VARCHAR(255) NOT NULL,
+    service_email VARCHAR(50) NOT NULL,
     message_id INT,
     permission_id INT NOT NULL
 );
@@ -26,9 +26,9 @@ CREATE TABLE IF NOT EXISTS customer_service (
 -- 创建用户表
 CREATE TABLE IF NOT EXISTS users (
     user_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
-    username VARCHAR(50) NOT NULL,
-    mail VARCHAR(50) NOT NULL,
-    password VARCHAR(255) NOT NULL,
+    user_name VARCHAR(50) NOT NULL,
+    user_mail VARCHAR(50) NOT NULL,
+    user_password VARCHAR(255) NOT NULL,
     message_id INT,
     permission_id INT NOT NULL
 );
@@ -48,14 +48,14 @@ CREATE TABLE IF NOT EXISTS messages (
 CREATE TABLE IF NOT EXISTS admin (
     admin_id INT PRIMARY KEY AUTO_INCREMENT,
     admin_name VARCHAR(50) NOT NULL,
-    mail VARCHAR(50) NOT NULL,
-    password VARCHAR(64) NOT NULL,
+    admin_mail VARCHAR(50) NOT NULL,
+    admin_password VARCHAR(64) NOT NULL,
     permission_id INT NOT NULL
 );
 
 -- 添加外键约束
-ALTER TABLE customer_service ADD FOREIGN KEY (permission_id) REFERENCES permissions(permission_id);
-ALTER TABLE customer_service ADD FOREIGN KEY (message_id) REFERENCES messages(message_id);
-ALTER TABLE users ADD FOREIGN KEY (permission_id) REFERENCES permissions(permission_id);
-ALTER TABLE users ADD FOREIGN KEY (message_id) REFERENCES messages(message_id);
-ALTER TABLE admin ADD FOREIGN KEY (permission_id) REFERENCES permissions(permission_id);
+-- ALTER TABLE customer_service ADD FOREIGN KEY (permission_id) REFERENCES permissions(permission_id);
+-- ALTER TABLE customer_service ADD FOREIGN KEY (message_id) REFERENCES messages(message_id);
+-- ALTER TABLE users ADD FOREIGN KEY (permission_id) REFERENCES permissions(permission_id);
+-- ALTER TABLE users ADD FOREIGN KEY (message_id) REFERENCES messages(message_id);
+-- ALTER TABLE admin ADD FOREIGN KEY (permission_id) REFERENCES permissions(permission_id);
