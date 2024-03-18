@@ -53,6 +53,30 @@ CREATE TABLE IF NOT EXISTS admin (
     permission_id INT NOT NULL
 );
 
+-- 创建课程表
+CREATE TABLE IF NOT EXISTS courses (
+    course_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_title VARCHAR(255) NOT NULL,
+    course_description TEXT NOT NULL,
+    course_price DECIMAL(10, 2) NOT NULL,
+    course_duration INT NOT NULL, -- 以分钟为单位
+    course_rating DECIMAL(3, 2), -- 可以存储评分，例如4.5
+    course_image VARCHAR(255), -- 图片路径或URL
+    course_publish_date DATE, -- 默认使用当前日期
+    publisher_id INT NOT NULL -- 发布者ID
+);
+
+
+-- 创建发布者表
+CREATE TABLE IF NOT EXISTS publishers (
+    publisher_id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    service_id INT,
+    admin_id INT
+);
+
+
+
 -- 添加外键约束
 -- ALTER TABLE customer_service ADD FOREIGN KEY (permission_id) REFERENCES permissions(permission_id);
 -- ALTER TABLE customer_service ADD FOREIGN KEY (message_id) REFERENCES messages(message_id);
