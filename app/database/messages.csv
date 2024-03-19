@@ -1,3 +1,4 @@
 message_id,user_id,service_id,user_message_content,service_message_content,user_sent_time,service_sent_time
-1,1,1,Hello are you there?,"Dear, do you need anything?",2024/3/11 14:50,2024/3/11 15:00
-2,2,2,Hello are you there?,"Dear, do you need anything?",2024/3/11 14:50,2024/3/11 15:00
+1,1,1,"Hello are you there?","Dear, do you need anything?",2024/3/11 14:50,2024/3/11 15:00
+2,2,2,"What is the teaching method of this course?","Dear, the way we teach here is that you purchase the course in the course purchase interface and fill in your information. We will have a teacher contact you.",2024/3/11 16:50,2024/3/11 17:00
+3,1,2,"Hello are you there?","Dear, do you need anything?",2024/3/12 16:00,2024/3/12 16:01

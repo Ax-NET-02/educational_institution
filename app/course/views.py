@@ -4,9 +4,9 @@ import MySQLdb.cursors
 from datetime import date, datetime, timedelta
 from pytz import timezone
 
-register = Blueprint('register', __name__)
+course = Blueprint('course', __name__)
 
 
-@register.route('/register')
-def registers():
-    return '注册'
+@course.route('/course')
+def courses():
+    return '课程'

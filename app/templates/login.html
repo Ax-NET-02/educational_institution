@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap5.0.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/groups.css') }}">
+  <title>Log in</title>
+</head>
+
+<style>
+  .container {
+    display: flex;
+    align-items: center;
+    /* 在交叉轴上垂直居中 */
+    justify-content: center;
+    /* 在主轴上水平居中 */
+  }
+</style>
+
+<body>
+  <div class="modal modal-sheet position-static d-block bg-body-secondary p-3 py-md-0" tabindex="-1" role="dialog"
+    id="modalSignin">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content rounded-5 shadow shadow-lg p-4 bg-body-tertiary rounded">
+        <div class="modal-header p-4 pb-4 border-bottom-0">
+          <h1 class="fw-bold mb-0 fs-2 container">Log in</h1>
+        </div>
+
+        <form method="POST" action="{{ url_for('login.logins')}}">
+          <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
+            <div class="list-group list-group-radio d-grid gap-2 border-0">
+              <div class="position-relative">
+                <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="user_type"
+                  id="listGroupRadioGrid1" value="administrator" checked>
+                <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid1">
+                  <strong class="fw-semibold">Administrator</strong>
+                </label>
+              </div>
+
+              <div class="position-relative">
+                <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="user_type"
+                  id="listGroupRadioGrid2" value="customer_service">
+                <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid2">
+                  <strong class="fw-semibold">Customer Service</strong>
+                </label>
+              </div>
+
+              <div class="position-relative">
+                <input class="form-check-input position-absolute top-50 end-0 me-3 fs-5" type="radio" name="user_type"
+                  id="listGroupRadioGrid3" value="user">
+                <label class="list-group-item py-3 pe-5" for="listGroupRadioGrid3">
+                  <strong class="fw-semibold">User</strong>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="modal-body p-5 pt-0">
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control rounded-3" id="email" placeholder="email" name="email">
+              <label for="email">Email/Username</label>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control rounded-3" id="password" placeholder="password"
+                name="password">
+              <label for="password">Password</label>
+            </div>
+            <button class="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign_in</button>
+            <div style="margin-top: 1%;">
+              <small class="text-body-secondary">
+                <span>Not yet registered?</span>
+                <span><a href="register.html" class="fw-bold">Sign up now</span>
+              </small>
+            </div>
+            <hr class="my-4">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap5.0.js') }}"></script>
+</body>
+
+</html>

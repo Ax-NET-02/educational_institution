@@ -19,15 +19,17 @@ mysql = MySQL(app)
 
 # 从app包中导入蓝图
 from app.home.views import home
-# from app.login.views import login
-# from app.register.views import register
-# from app.user.views import user
-# from app.article.views import article
+from app.login.views import login
+from app.register.views import register
+from app.user.views import user
+from app.course.views import course
+from app.order.views import order
 
 
 # 蓝图注册
 app.register_blueprint(home)
-# app.register_blueprint(login)
-# app.register_blueprint(register)
-# app.register_blueprint(user)
-# app.register_blueprint(article)
+app.register_blueprint(login)
+app.register_blueprint(register)
+app.register_blueprint(user)
+app.register_blueprint(course)
+app.register_blueprint(order)

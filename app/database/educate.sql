@@ -19,7 +19,7 @@ CREATE TABLE IF NOT EXISTS customer_service (
     service_name VARCHAR(50) NOT NULL,
     service_password VARCHAR(255) NOT NULL,
     service_email VARCHAR(50) NOT NULL,
-    message_id INT,
+    service_number VARCHAR(50) NOT NULL,
     permission_id INT NOT NULL
 );
 
@@ -28,8 +28,8 @@ CREATE TABLE IF NOT EXISTS users (
     user_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     user_name VARCHAR(50) NOT NULL,
     user_mail VARCHAR(50) NOT NULL,
+    user_number VARCHAR(50) NOT NULL,
     user_password VARCHAR(255) NOT NULL,
-    message_id INT,
     permission_id INT NOT NULL
 );
 
@@ -70,10 +70,18 @@ CREATE TABLE IF NOT EXISTS courses (
 -- 创建发布者表
 CREATE TABLE IF NOT EXISTS publishers (
     publisher_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
     service_id INT,
     admin_id INT
 );
+
+CREATE TABLE IF NOT EXISTS orders (
+    order_id INT PRIMARY KEY AUTO_INCREMENT,
+    course_id INT,
+    order_price DECIMAL(10, 2),
+    order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    user_id INT
+);
+
 
 
 
