@@ -8,5 +8,5 @@ register = Blueprint('register', __name__)
 
 
 @register.route('/register')
-def registers():
-    return '注册'
+def Get_register():
+    return render_template('cs.html')

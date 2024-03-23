@@ -30,4 +30,8 @@
     animation: wave 1s infinite alternate; /* 1s 持续时间，交替反向播放，无限循环 */
 }
 
+a {
+    text-decoration: none;
+}
+
 
