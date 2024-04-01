@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}Course{% endblock %}
+
+{% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
+type="image/x-icon"{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course.css') }}">
+{% endblock %}
+
+{% block body %}
+<div style="margin-top: 4%;">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <span class="fw-bold fs-4"> PTE AI Practice platform </span> <span style="margin-left: 2%;"><a href="">查看更多</a>></span>
+            </div>
+        </div>
+        <div class="container text-center" style="margin-top: 1%;">
+            <div class="row">
+                <div class="col">
+                    <div class="card" style="width: 25rem;">
+                        <img src="{{ url_for('static', filename='images/img/r-23.png') }}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                      </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" style="width: 25rem;">
+                        <img src="{{ url_for('static', filename='images/img/r-23.png') }}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                      </div>
+                </div>
+
+                <div class="col">
+                    <div class="card" style="width: 25rem;">
+                        <img src="{{ url_for('static', filename='images/img/r-23.png') }}" class="card-img-top" alt="">
+                        <div class="card-body">
+                            <a href="#" class="card-link">Another link</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

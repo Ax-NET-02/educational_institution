@@ -32,12 +32,32 @@
 
 a {
     text-decoration: none;
+    color: rgb(88, 97, 102);
 }
 
-.box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+/* 鼠标悬停时链接颜色为红色 */
+a:hover {
+    color: rgb(58, 197, 197);
+}
+
+
+.app_show{
+    height: 200px;
+    background-image: url('../images/app_show_2.png'); /* 替换为您自己的图片路径 */
+    background-size: cover; /* 图片铺满整个容器 */
+    background-position: center; /* 图片居中 */
+    background-repeat: no-repeat; /* 不重复平铺图片 */
+}
+
+main {
+    width: 100%;
+    overflow-x: hidden; /* 禁止水平滚动 */
+}
+
+.line {
+    border-top: 2px solid rgb(102, 102, 102); /* 修改颜色 */
+    width: 100%;
+    margin: 20px 0;
+}
 
 

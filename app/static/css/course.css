@@ -1,0 +1,11 @@
+.Grid {
+    display: flex;
+}
+  
+.Grid-cell {
+    flex: 1;
+}
+
+a {
+    text-decoration: none;
+}

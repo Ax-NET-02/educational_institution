@@ -24,6 +24,7 @@ from app.register.views import register
 from app.user.views import user
 from app.course.views import course
 from app.order.views import order
+from app.chat.views import chat
 
 
 # 蓝图注册
@@ -33,3 +34,4 @@ app.register_blueprint(register)
 app.register_blueprint(user)
 app.register_blueprint(course)
 app.register_blueprint(order)
+app.register_blueprint(chat)

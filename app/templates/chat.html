@@ -37,14 +37,17 @@
     <div class="row">
       <div class="col-md-12">
         <div class="chat-container">
-          <div class="message">
-            <img src="{{ url_for('static', filename='images/avatar/1.jpg')}}" alt="Avatar" class="avatar">
-            <span class="sender">John Doe:</span> Hello, how are you?
-          </div>
-          <div class="message">
-            <img src="{{ url_for('static', filename='images/avatar/2.jpeg')}}" alt="Avatar" class="avatar">
-            <span class="sender">Jane Smith:</span> I'm good, thank you!
-          </div>
+            {% for chats in customer_chat %}
+                <div class="message">
+                    <img src="{{ url_for('static', filename='images/avatar/1.jpg')}}" alt="Avatar" class="avatar">
+                    <span class="sender">{{ chats.user_name }}</span> {{ chats.user_message_content}}
+                </div>
+
+                <div class="message">
+                    <img src="{{ url_for('static', filename='images/avatar/1.jpg')}}" alt="Avatar" class="avatar">
+                    <span class="sender">{{ chats.service_name }}</span> {{ chats.service_message_content}}
+                </div>
+            {% endfor %}
           <!-- More messages can be added here -->
         </div>
       </div>

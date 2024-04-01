@@ -9,4 +9,4 @@ course = Blueprint('course', __name__)
 
 @course.route('/course')
 def courses():
-    return '课程'
+    return render_template('course.html')
