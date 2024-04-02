@@ -1,45 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap5.0.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-icons.min.css') }}">
-    <link {% block link %}{% endblock %}>
-    {% block head %}{% endblock %}
-    <title>{% block title %}{% endblock %}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap5.0.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap-icons.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <link {% block link %}{% endblock %}>
+  {% block head %}{% endblock %}
+  <title>{% block title %}{% endblock %}</title>
 </head>
+
 <body>
-    <header class="p-3 bg-white border-bottom border-black">
-        <div class="container">
-          <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                <a href="/"><img src="{{ url_for('static', filename='images/LOGO.png') }}" alt="LOGO" width="80px" height="100%"></a>
-    
-            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-left: 2%;">
-              <li><a href="#" class="nav-link px-2 text-body-emphasis ">Home</a></li>
-              <li><a href="#" class="nav-link px-2 text-body-emphasis">Features</a></li>
-              <li><a href="#" class="nav-link px-2 text-body-emphasis">Pricing</a></li>
-              <li><a href="#" class="nav-link px-2 text-body-emphasis">FAQs</a></li>
-              <li><a href="#" class="nav-link px-2 text-body-emphasis">About</a></li>
-            </ul>
-                 
-            <div class="text-end">
-              <button type="button" class="btn btn-outline-secondary me-2"><a class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ url_for('login.Get_login') }}">Login</a></button>
-              <button type="button" class="btn btn-warning"><a class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="{{ url_for('register.Get_register') }}">Sign-up</a></button>
+  <header class="p-3 bg-white border-bottom border-black">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/"><img src="{{ url_for('static', filename='images/LOGO.png') }}" alt="LOGO" width="80px"
+            height="100%"></a>
+
+        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0" style="margin-left: 2%;">
+          <li><a href="{{ url_for('home.index') }}" class="nav-link px-2 text-body-emphasis ">Home</a></li>
+          <li><a href="#" class="nav-link px-2 text-body-emphasis">Features</a></li>
+          <li><a href="{{ url_for('course.courses') }}" class="nav-link px-2 text-body-emphasis">Course</a></li>
+          <li><a href="#" class="nav-link px-2 text-body-emphasis">FAQs</a></li>
+          <li><a href="#" class="nav-link px-2 text-body-emphasis">About</a></li>
+        </ul>
+
+        <div class="text-end">
+          <button type="button" class="btn btn-outline-secondary me-2"><a
+              class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              href="{{ url_for('login.Get_login') }}">Login</a></button>
+          <button type="button" class="btn btn-warning"><a
+              class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              href="{{ url_for('register.Get_register') }}">Sign-up</a></button>
+        </div>
+      </div>
+    </div>
+  </header>
+  <div>
+    {% block body %}{% endblock %}
+
+    <button class="back-to-top" onclick="scrollToTop()">↑</button>
+  </div>
+
+  <footer>
+    <div style="margin-top: 5%;">
+      <div style="background-color: rgb(41, 41, 51);">
+        <div class="container text-center">
+          <div class="row align-items-start">
+            <div class="line" style="margin-top: 10%; margin-bottom: 4%;"></div>
+            <div class="col text-secondary">
+              <span class="text-light fw-bold">About PTE</span>
+
+              <p style="margin-top: 4%;"><a href="">Exam introduction</a></p>
+
+              <p><a href="">accredited school</a></p>
+
+              <p><a href="">Understand the question types</a></p>
+
+              <p><a href="">introductory course</a></p>
+
+              <p><a href="">Compare IELTS TOEFL</a></p>
             </div>
+
+            <div class="col text-secondary">
+              <span class="text-light fw-bold">PTE registration</span>
+
+              <p style="margin-top: 4%;"><a href="">PTE mock test website</a></p>
+
+              <p><a href="">Official application website</a></p>
+
+              <p><a href="">PTE exam venue location</a></p>
+
+              <p><a href="">Official contact information</a></p>
+
+              <p><a href="">Candidate Handbook</a></p>
+            </div>
+
+            <div class="col text-secondary">
+              <span class="text-light fw-bold">PTE courses</span>
+
+              <p style="margin-top: 4%;"><a href="">Ape world full class</a></p>
+
+              <p><a href="">One-to-one lessons</a></p>
+
+              <p><a href="">WHV special courses</a></p>
+            </div>
+
+            <div class="col text-secondary">
+              <span class="text-light fw-bold">APP download</span>
+
+              <p style="margin-top: 4%;"><a href="">IOS version</a></p>
+
+              <p><a href="">Android version</a></p>
+
+              <p><a href="">PC version</a></p>
+            </div>
+
+
+
+
+            <div class="col text-secondary">
+              <span class="text-light fw-bold">contact us</span>
+
+              <p style="margin-top: 4%;"><a href="">WeChat: Please scan the QR code to add</a></p>
+
+              <p><a href="">Tel: +86-028-83229656</a></p>
+
+              <p><a href="">Email: 2484601608@qq.com</a></p>
+            </div>
+
+            
+            <div class="line" style="margin-top: 4%; margin-bottom: 8%;"></div>
+            <p class="text-light fw-bold">&copy; 2024-4-4 Ax-NET All rights reserved.</p>
           </div>
         </div>
-      </header>
-    <div>
-        {% block body %}{% endblock %}
+      </div>
     </div>
+  </footer>
 
-    <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/bootstrap5.0.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/jquery-3.7.1.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap5.0.js') }}"></script>
+  <script>
+    // 返回顶部函数
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+    
+    // 检测滚动，显示或隐藏返回顶部按钮
+    window.addEventListener('scroll', function() {
+      var backToTopButton = document.querySelector('.back-to-top');
+      if (window.pageYOffset > 100) {
+        backToTopButton.style.display = 'block';
+      } else {
+        backToTopButton.style.display = 'none';
+      }
+    });
+    </script>
 </body>
-</html>
 
+</html>
