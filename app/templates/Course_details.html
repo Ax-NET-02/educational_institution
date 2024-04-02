@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Course{% endblock %}
+{% block title %}Course details{% endblock %}
 
 {% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
 type="image/x-icon"{% endblock %}
@@ -10,5 +10,48 @@ type="image/x-icon"{% endblock %}
 {% endblock %}
 
 {% block body %}
-
+<div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="text-center" style="margin-top: 2%;">
+            <span class="fs-2 fw-bold">Course details</span>
+        </div>
+        <div class="container" style="background-color: rgb(250, 250, 250); margin-top: 2%;">
+            <div class="row">
+              <div class="col border">
+                <div style="display: flex; justify-content: center; margin-top: 4%; margin-bottom: 2%;">
+                    <img src="{{ url_for('static', filename='images/img/r-23.png') }}" class="img-fluid" alt="r-23" width="80%">
+                </div>
+                <p class="fw-bold fs-5">Course Introduction: </p>
+                <span class="text-secondary fw-bold">Little Sunflower Class has started, what should I do if my child always has trouble sleeping? Use Sunflower 999 cold elixir</span>
+                <div style="margin-top: 2%; margin-bottom: 2%;">
+                    <table class="table table-info">
+                        <thead>
+                          <tr>
+                            <th scope="col">Course Chapter</th>
+                            <th scope="col">Total course duration</th>
+                            <th scope="col">Course Difficulty</th>
+                            <th scope="col">Course fees</th>
+                            <th scope="col">Course Rating</th>
+                            <th scope="col">course teacher</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>two sections</td>
+                            <td>1h30</td>
+                            <td>medium</td>
+                            <td>50$</td>
+                            <td>4.5</td>
+                            <td>Ax-NET(Developer)</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+              </div>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
 {% endblock %}
