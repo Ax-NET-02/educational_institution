@@ -26,6 +26,7 @@ from app.course.views import course
 from app.order.views import order
 from app.chat.views import chat
 from app.Course_details.views import Course_details
+from app.Course_order.views import Course_order
 
 
 # 蓝图注册
@@ -37,3 +38,4 @@ app.register_blueprint(course)
 app.register_blueprint(order)
 app.register_blueprint(chat)
 app.register_blueprint(Course_details)
+app.register_blueprint(Course_order)
