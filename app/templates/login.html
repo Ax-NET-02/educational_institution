@@ -21,6 +21,11 @@
 </style>
 
 <body>
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div id="flash-message" class="flash alert alert-{{category}} text-center alert-dismissible fade show m-auto">
+      {{ message }}
+    </div>
+  {% endfor %}
   <div class="modal modal-sheet position-static d-block bg-body-secondary p-3 py-md-0" tabindex="-1" role="dialog"
     id="modalSignin">
     <div class="modal-dialog" role="document">
@@ -29,7 +34,7 @@
           <h1 class="fw-bold mb-0 fs-2 container">Log in</h1>
         </div>
 
-        <form method="POST" action="{{ url_for('login.Get_login')}}">
+        <form method="POST" action="{{ url_for('login.login_data')}}">
           <div class="d-flex flex-column flex-md-row p-4 gap-4 py-md-5 align-items-center justify-content-center">
             <div class="list-group list-group-radio d-grid gap-2 border-0">
               <div class="position-relative">
@@ -61,7 +66,7 @@
           <div class="modal-body p-5 pt-0">
             <div class="form-floating mb-3">
               <input type="email" class="form-control rounded-3" id="email" placeholder="email" name="email">
-              <label for="email">Email/Username</label>
+              <label for="email">Email</label>
             </div>
             <div class="form-floating mb-3">
               <input type="password" class="form-control rounded-3" id="password" placeholder="password"
@@ -87,6 +92,14 @@
   <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap5.0.js') }}"></script>
+  <script>
+    // 获取闪现消息元素
+    var flashMessage = document.getElementById('flash-message');
+    // 在3秒后隐藏消息
+    setTimeout(function() {
+      flashMessage.style.display = 'none';
+    }, 3000);
+  </script>
 </body>
 
 </html>

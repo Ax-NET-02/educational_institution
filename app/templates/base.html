@@ -27,19 +27,65 @@
           <li><a href="{{ url_for('LearningForum.forum') }}" class="nav-link px-2 text-body-emphasis">Learning Forum</a></li>
           <li><a href="{{ url_for('Publicquestion.question', filename='') }}" class="nav-link px-2 text-body-emphasis">Release Question</a></li>
         </ul>
-
+        {% if 'loggedin' not in session %}
         <div class="text-end">
           <button type="button" class="btn btn-outline-secondary me-2"><a
               class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="{{ url_for('login.Get_login') }}">Login</a></button>
+              href="{{ url_for('login.rendering_login') }}">Login</a>
+          </button>
           <button type="button" class="btn btn-warning"><a
               class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="{{ url_for('register.Get_register') }}">Sign-up</a></button>
+              href="{{ url_for('register.user_register') }}">Sign-up</a>
+          </button>
         </div>
+        {% else %}
+          {% if session['permission_name'] == 'admin' %}
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-secondary me-2"><a
+              class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              href="#">管理员</a>
+            </button>
+
+            <button type="button" class="btn btn-outline-secondary me-2"><a
+              class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              href="{{ url_for('logout.quit') }}">退出登录</a>
+            </button>
+          </div>
+          {% elif session['permission_name'] == 'service' %}
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-secondary me-2"><a
+              class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              href="#">客服</a>
+            </button>
+
+            <button type="button" class="btn btn-outline-secondary me-2"><a
+              class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              href="{{ url_for('logout.quit') }}">退出登录</a>
+            </button>
+          </div>
+          {% else %}
+          <div class="text-end">
+            <button type="button" class="btn btn-outline-secondary me-2"><a
+              class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              href="#">用户</a>
+            </button>
+
+            <button type="button" class="btn btn-outline-secondary me-2"><a
+              class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+              href="{{ url_for('logout.quit') }}">退出登录</a>
+            </button>
+          </div>
+          {% endif %}
+        {% endif %}
       </div>
     </div>
   </header>
   <div>
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+      <div id="flash-message" class="flash alert alert-{{category}} text-center alert-dismissible fade show m-auto">
+        {{ message }}
+      </div>
+    {% endfor %}
     {% block body %}{% endblock %}
 
     <button class="back-to-top" onclick="scrollToTop()">↑</button>
@@ -143,6 +189,15 @@
         backToTopButton.style.display = 'none';
       }
     });
+    </script>
+
+    <script>
+      // 获取闪现消息元素
+      var flashMessage = document.getElementById('flash-message');
+      // 在3秒后隐藏消息
+      setTimeout(function() {
+        flashMessage.style.display = 'none';
+      }, 3000);
     </script>
 </body>
 

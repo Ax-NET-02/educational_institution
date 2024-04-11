@@ -4,7 +4,7 @@ from app import connect
 
 # 数据库配置
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'moviemagicsecretkey'
+app.config['SECRET_KEY'] = 'educational_institutionkey'
 
 app.config['MYSQL_HOST'] = connect.host
 app.config['MYSQL_USER'] = connect.user
@@ -30,6 +30,7 @@ from app.Course_order.views import Course_order
 from app.Learning_Forum.views import LearningForum
 from app.Forum_details.views import Forumdetails
 from app.public_question.views import Publicquestion
+from app.logout.views import logout
 
 
 # 蓝图注册
@@ -45,3 +46,4 @@ app.register_blueprint(Course_order)
 app.register_blueprint(LearningForum)
 app.register_blueprint(Forumdetails)
 app.register_blueprint(Publicquestion)
+app.register_blueprint(logout)
