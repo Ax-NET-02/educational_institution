@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Course{% endblock %}
+
+{% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
+type="image/x-icon"{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course.css') }}">
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="container d-flex justify-content-end mt-5" style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+        <h1>Edit User</h1>
+    </div>
+    <div class="container mt-5">
+      <div class="row justify-content-center">
+          <div class="col-md-8">
+          <div class="personal-card text-left">
+            <div class="modal-body mt-2">
+              <form action="" method="post">
+                <div class="mb-3">   
+                  <label for="{{ User_data[0].id }}" class="form-label" style="color:grey">Edit ID:</label>
+                  <input type="text" class="form-control mb-2" id="{{ User_data[0].id }}" disabled value="{{ User_data[0].id }}">
+                  <input hidden type="number" name="{{ User_data[0].id }}" class="form-control" value="{{ User_data[0].id }}" readonly>
+    
+                  <label for="{{ User_data[0].name }}" class="form-label" style="color:grey">Edit user_name:</label>
+                  <input type="text" class="form-control" id="{{ User_data[0].name }}" value="{{ User_data[0].name }}" name="{{ User_data[0].name }}">
+    
+                  <label for="{{ User_data[0].mail }}" class="form-label" style="color:grey">Edit email:</label>
+                  <input type="{{ User_data[0].mail }}" class="form-control mb-2" id="{{ User_data[0].mail }}" disabled value="{{ User_data[0].mail }}">
+                  <input hidden type="{{ User_data[0].mail }}" name="{{ User_data[0].mail }}" class="form-control" value="{{ User_data[0].mail }}" readonly>
+    
+    
+                  <label for="{{ User_data[0].phone }}" class="form-label" style="color:grey">Edit phone:</label>
+                  <input type="{{ User_data[0].phone }}" class="form-control" id="{{ User_data[0].phone }}" value="{{ User_data[0].phone }}" name="{{ User_data[0].phone }}">
+              </form>
+            <div class="modal-footer" style="margin-top: 2%;">
+              <a role="button" class="btn btn-success mx-2" href="{{ url_for('Manage_users.manage_users') }}">Back</a>
+              <a role="button" class="btn btn-secondary mx-2" href="">Cancelk</a>
+              <button type="submit" class="btn btn-dark">Save Changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</main>
+{% endblock  %}

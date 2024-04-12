@@ -31,6 +31,7 @@ from app.Learning_Forum.views import LearningForum
 from app.Forum_details.views import Forumdetails
 from app.public_question.views import Publicquestion
 from app.logout.views import logout
+from app.Manage_users.views import Manage_users
 
 
 # 蓝图注册
@@ -47,3 +48,4 @@ app.register_blueprint(LearningForum)
 app.register_blueprint(Forumdetails)
 app.register_blueprint(Publicquestion)
 app.register_blueprint(logout)
+app.register_blueprint(Manage_users)

@@ -3,8 +3,6 @@ from flask import Blueprint, render_template,request, url_for, redirect, session
 import MySQLdb.cursors
 from datetime import date, datetime, timedelta
 import bcrypt
-from password_strength import PasswordPolicy
-from password_strength import PasswordStats
 
 login = Blueprint('login', __name__)
 

@@ -21,6 +21,11 @@
 </style>
 
 <body>
+  {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div id="flash-message" class="flash alert alert-{{category}} text-center alert-dismissible fade show m-auto">
+      {{ message }}
+    </div>
+  {% endfor %}
   <div class="modal modal-sheet position-static d-block bg-body-secondary p-3 py-md-0" tabindex="-1" role="dialog"
     id="modalSignin">
     <div class="modal-dialog" role="document">
@@ -73,6 +78,14 @@
   <script src="{{ url_for('static', filename='js/popper.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap5.0.js') }}"></script>
+  <script>
+    // 获取闪现消息元素
+    var flashMessage = document.getElementById('flash-message');
+    // 在3秒后隐藏消息
+    setTimeout(function() {
+      flashMessage.style.display = 'none';
+    }, 3000);
+  </script>
 </body>
 
 </html>
