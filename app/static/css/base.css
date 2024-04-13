@@ -44,3 +44,13 @@ a:hover {
   text-decoration: none;
   color: rgb(58, 197, 197);
 }
+
+.dropdown-menu a.dropdown-item {
+  text-decoration: none;
+  color: rgb(88, 97, 102);
+}
+
+.dropdown-menu a.dropdown-item:hover {
+  text-decoration: none;
+  color: rgb(58, 197, 197);
+}

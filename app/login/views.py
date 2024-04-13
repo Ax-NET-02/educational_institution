@@ -39,7 +39,7 @@ def login_data():
             if admin_accounts:
                 if bcrypt.checkpw(admin_password.encode('utf-8'), admin_accounts['admin_password'].encode('utf-8')): #check passwords if match
                     session['loggedin'] = True  
-                    session['admin_email'] = admin_accounts['admin_mail']
+                    session['admin_name'] = admin_accounts['admin_name']
                     session['permission_name'] = admin_accounts['permission_name']
                     flash(f"Login successful, welcome-{admin_accounts['admin_name']}", "success")
                     return redirect(url_for('home.index'))                    

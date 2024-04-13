@@ -46,9 +46,29 @@ def edit_users():
         flash("Plase login as manager or admin to edit staff", "warning")
         return redirect(url_for('login.rendering_login'))
     
-@Manage_users.route('/Update_users')
+@Manage_users.route('/Update_users', methods = ['POST'])
 def update_users():
-    pass
+    if 'loggedin' in session and session['permission_name'] in ('service', 'admin'):
+        user_id = request.form['user_id']
+        user_name = request.form['user_name']
+        user_mail = request.form['email']
+        user_number = request.form['phone']      
+
+        parameters_user = (user_name, user_mail, user_number, user_id)
+        sql_user = """
+            UPDATE users
+            SET user_name = %s, user_mail = %s, user_number = %s
+            WHERE user_id = %s;
+            """
+        # update user table
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        cursor.execute(sql_user, parameters_user)
+        mysql.connection.commit()
+        flash(f"User - id {user_id} - {user_name} is now updated", "success")
+        return redirect(url_for('Manage_users.manage_users'))
+    else:
+        flash("Plase login as manager or admin to edit staff", "warning")
+        return redirect(url_for('login.rendering_login'))
 
 @Manage_users.route('/Delete_users')
 def delete_users():
@@ -56,4 +76,4 @@ def delete_users():
 
 @Manage_users.route('/Add_users')
 def add_users():
-    pass
+    pass 
