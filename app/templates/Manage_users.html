@@ -25,8 +25,8 @@ type="image/x-icon"{% endblock %}
                 <button type="submit" class="btn btn-dark"><a href="#" class="text-decoration-none text-white"
                         style="font-size: 13px;" onclick="ClearFields();">Cancel</a></button>
                 {% if session['permission_name'] in ['admin', 'service']%}
-                <a href="#" role="button" style="font-size:13px;" class="btn btn-outline-dark mx-2">
-                    <i class="bi bi-pencil-square"></i>Add Staff
+                <a href="{{ url_for('Manage_users.add_users') }}" role="button" style="font-size:13px;" class="btn btn-outline-dark mx-2">
+                    <i class="bi bi-pencil-square"></i>Add User
                 </a>
                 {% endif %}
             </div>
@@ -66,8 +66,8 @@ type="image/x-icon"{% endblock %}
                                 <!---Delete--->
                                 <button type="button" class="btn btn-warning mt-2" style="font-size: 10px;"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#exampleStaff">Delete</button>
-                                <div class="modal fade" id="exampleStaff"
+                                    data-bs-target="#exampleStaff{{ user_datas.id }}">Delete</button>
+                                <div class="modal fade" id="exampleStaff{{ user_datas.id }}"
                                     tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
@@ -78,18 +78,16 @@ type="image/x-icon"{% endblock %}
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Are you sure you want to delete staff <span style="color: blue;">
-                                                    staffid- 
-                                                    firstname
-                                                    lastname?</span>
+                                                <p>Are you sure you want to delete user <span style="color: blue;">
+                                                    userid-{{ user_datas.id }} {{ user_datas.name }}?</span>
                                                 </p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
                                                 <a type="button" class="btn btn-warning"
-                                                    href=""
-                                                    id="exampleStaff">Delete</a>
+                                                    href="/Delete_users?user_id={{ user_datas.id }}"
+                                                    id="exampleStaff{{ user_datas.id }}">Delete</a>
                                             </div>
                                         </div>
                                     </div>

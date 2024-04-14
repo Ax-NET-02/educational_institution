@@ -10,6 +10,17 @@
   <link {% block link %}{% endblock %}>
   {% block head %}{% endblock %}
   <title>{% block title %}{% endblock %}</title>
+  <style>
+    a {
+  text-decoration: none;
+  color: rgb(88, 97, 102);
+    }
+
+    a:hover {
+      text-decoration: none;
+      color: rgb(58, 197, 197);
+    }
+  </style>
 </head>
 
 <body>
@@ -23,7 +34,7 @@
           <li><a href="{{ url_for('home.index') }}" class="nav-link px-2 text-body-emphasis ">Home</a></li>
           <li><a href="{{ url_for('course.courses') }}" class="nav-link px-2 text-body-emphasis">Course</a></li>
           <li><a href="{{ url_for('LearningForum.forum') }}" class="nav-link px-2 text-body-emphasis">Learning Forum</a></li>
-          <li><a href="{{ url_for('Publicquestion.question', filename='') }}" class="nav-link px-2 text-body-emphasis">Release Question</a></li>
+          <li><a href="{{ url_for('Publicquestion.question') }}" class="nav-link px-2 text-body-emphasis">Release Question</a></li>
         </ul>
         {% if 'loggedin' not in session %}
         <div class="text-end">
@@ -41,7 +52,7 @@
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="http://192.168.1.11:2024/static/images/admin-01.png" alt="Profile Picture" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="" alt="{{ session['admin_name'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ url_for('Manage_users.manage_users') }}">Manage_users</a></li>
@@ -61,14 +72,14 @@
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="http://192.168.1.11:2024/static/images/admin-01.png" alt="Profile Picture" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="" alt="{{ session['service'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ url_for('Manage_users.manage_users') }}">Manage_users</a></li>
               <li><a class="dropdown-item" href="#">Manage_course</a></li>
               <li><a class="dropdown-item" href="#">Manage_community</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Welcome {{ session['service'] }}!</a></li>
+              <li><a class="dropdown-item" href="#">Welcome {{ session['service_name'] }}!</a></li>
             </ul>
           </div>
           <div style="margin-left: 1%;">
@@ -81,14 +92,13 @@
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="http://192.168.1.11:2024/static/images/admin-01.png" alt="Profile Picture" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="" alt="{{ session['user'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="{{ url_for('Manage_users.manage_users') }}">Manage_users</a></li>
-              <li><a class="dropdown-item" href="#">Manage_course</a></li>
-              <li><a class="dropdown-item" href="#">Manage_community</a></li>
+              <li><a class="dropdown-item" href="#">My_course</a></li>
+              <li><a class="dropdown-item" href="#">My_community</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Welcome {{ session['user'] }}!</a></li>
+              <li><a class="dropdown-item" href="#">Welcome {{ session['user_name'] }}!</a></li>
             </ul>
           </div>
           <div style="margin-left: 1%;">

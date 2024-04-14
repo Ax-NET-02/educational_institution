@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Course{% endblock %}
+
+{% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
+type="image/x-icon"{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course.css') }}">
+{% endblock %}
+
+{% block body %}
+<main>
+    {% for category, message in get_flashed_messages(with_categories=true) %}
+    <div class="flash alert alert-{{category}} text-center alert-dismissible fade show m-auto">
+        {{ message }}
+    </div>
+    {% endfor %}
+    <div class="container d-flex justify-content-end mt-5"
+        style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+        <h1>Add New Staff</h1>
+    </div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="personal-card text-left">
+                    <!-- Use Jinja -->
+                    <div class="modal-body mt-2">
+                        <form action="{{ url_for('Manage_users.add_users_data') }}" method="post">
+                            <div class="mb-3">
+                                <label for="username" class="form-label" style="color:grey">username:</label>
+                                <input type="text" class="form-control mb-2" id="username" name="username" required
+                                    pattern="^[a-zA-Z]{1,25}$" maxlength="25" title="Letters only">
+                                <label for="email" class="form-label" style="color:grey">Email:</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="email" required name="email"><span
+                                        class="input-group-text">@educational.com</span>
+                                </div>
+                                <label for="phone" class="form-label" style="color:grey">Phone:</label>
+                                <input type="text" class="form-control" id="phone" required name="phone">
+                                <label for="password" class="form-label" style="color:grey">password:</label>
+                                <input type="password" class="form-control" id="password" required name="password">
+                            </div>
+                            <div class="modal-footer" style="margin-top: 2%;">
+                                <a role="button" class="btn btn-success mx-2"
+                                    href="{{ url_for('Manage_users.manage_users') }}">Back</a>
+                                <button type="submit" class="btn btn-dark">Save Changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

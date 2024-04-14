@@ -9,4 +9,8 @@ Publicquestion = Blueprint('Publicquestion', __name__)
 
 @Publicquestion.route('/public_question')
 def question():
-    return render_template('public_question.html')
+    if 'loggedin' in session:
+        return render_template('public_question.html')
+    else:
+        flash("Please log in to post community content", "danger")
+        return redirect(url_for('login.rendering_login'))

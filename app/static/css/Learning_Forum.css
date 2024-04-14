@@ -30,6 +30,11 @@
     font-weight: 900;
 }
 
+a {
+    text-decoration: none;
+    color: rgb(88, 97, 102);
+  }
+
 a:hover {
     text-decoration: none;
     color: rgb(58, 197, 197);

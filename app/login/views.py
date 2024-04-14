@@ -73,6 +73,7 @@ def login_data():
             if service_accounts:
                 if bcrypt.checkpw(service_password.encode('utf-8'), service_accounts['service_password'].encode('utf-8')): #check passwords if match
                     session['loggedin'] = True 
+                    session['service_name'] = service_accounts['service_name']
                     session['permission_name'] = service_accounts['permission_name'] 
                     session['service_email'] = service_accounts['service_email']
                     flash(f"Login successful, welcome-{service_accounts['service_name']}", "success")
@@ -108,6 +109,7 @@ def login_data():
             if user_accounts:
                 if bcrypt.checkpw(user_password.encode('utf-8'), user_accounts['user_password'].encode('utf-8')): #check passwords if match
                     session['loggedin'] = True 
+                    session['user_name'] = user_accounts['user_name']
                     session['permission_name'] = user_accounts['permission_name'] 
                     session['user_mail'] = user_accounts['user_mail']
                     flash(f"Login successful, welcome-{user_accounts['user_name']}", "success")
