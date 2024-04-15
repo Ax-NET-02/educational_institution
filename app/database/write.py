@@ -83,27 +83,15 @@ for index, row in users.iterrows():
 courses = pandas.read_csv('courses.csv')
 for index, row in courses.iterrows():
     sql = """
-        INSERT INTO courses (course_id, course_title , course_description, course_price, course_duration, course_rating, course_image, course_publish_date, publisher_id)
+        INSERT INTO courses (course_id, course_title , course_description, course_price, course_duration, course_rating, course_image, course_publish_date, publisher_name)
         VALUES
         (%s, %s, %s, %s, %s, %s, %s, %s, %s)
     """
     
-    parameters = (row['course_id'], row['course_title'], row['course_description'], row['course_price'], row['course_duration'], row['course_rating'], row['course_image'], row['course_publish_date'], row['publisher_id'])
+    parameters = (row['course_id'], row['course_title'], row['course_description'], row['course_price'], row['course_duration'], row['course_rating'], row['course_image'], row['course_publish_date'], row['publisher_name'])
     insert(sql, parameters)
  
-     
-publishers = pandas.read_csv('publishers.csv')
-for index, row in publishers.iterrows():
-    sql = """
-        INSERT INTO publishers (publisher_id, service_id, admin_id)
-        VALUES
-        (%s, %s, %s)
-    """
-    
-    parameters = (int(row['publisher_id']), int(row['service_id']), int(row['admin_id']))
-    insert(sql, parameters)
-
-
+ 
 orders = pandas.read_csv('orders.csv')
 for index, row in orders.iterrows():
     sql = """

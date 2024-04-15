@@ -63,15 +63,7 @@ CREATE TABLE IF NOT EXISTS courses (
     course_rating DECIMAL(3, 2), -- 可以存储评分，例如4.5
     course_image VARCHAR(255), -- 图片路径或URL
     course_publish_date DATE, -- 默认使用当前日期
-    publisher_id INT NOT NULL -- 发布者ID
-);
-
-
--- 创建发布者表
-CREATE TABLE IF NOT EXISTS publishers (
-    publisher_id INT PRIMARY KEY AUTO_INCREMENT,
-    service_id INT,
-    admin_id INT
+    publisher_name TEXT NOT NULL -- 发布者ID
 );
 
 CREATE TABLE IF NOT EXISTS orders (
