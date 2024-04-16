@@ -9,4 +9,4 @@ order = Blueprint('order', __name__)
 
 @order.route('/order')
 def orders():
-    return '订单'
+    return render_template('Paypal.html')

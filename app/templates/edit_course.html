@@ -20,33 +20,50 @@ type="image/x-icon"{% endblock %}
             <div class="col-md-8">
                 <div class="personal-card text-left">
                     <div class="modal-body mt-2">
-                        <form action="{{ url_for('Manage_users.update_users') }}" method="post">
+                        <form action="{{ url_for('Manages_course.updata_course') }}" method="post">
                             <div class="mb-3">
-                                <label for="{{ User_data[0].id }}" class="form-label" style="color:grey">Edit
+                                <label for="{{ course_data[0].course_id }}" class="form-label" style="color:grey">Edit
                                     ID:</label>
-                                <input type="text" class="form-control mb-2" id="{{ User_data[0].id }}" disabled
-                                    value="{{ User_data[0].id }}">
-                                <input hidden type="number" name="user_id" class="form-control"
-                                    value="{{ User_data[0].id }}" readonly>
+                                <input type="text" class="form-control mb-2" id="{{ course_data[0].course_id }}" disabled
+                                    value="{{ course_data[0].course_id }}">
+                                <input hidden type="number" name="course_id" class="form-control"
+                                    value="{{ course_data[0].course_id }}" readonly>
 
-                                <label for="{{ User_data[0].name }}" class="form-label" style="color:grey">Edit
-                                    user_name:</label>
-                                <input type="text" class="form-control" id="{{ User_data[0].name }}"
-                                    value="{{ User_data[0].name }}" name="user_name">
+                                <label for="{{ course_data[0].course_title }}" class="form-label" style="color:grey">Edit
+                                    course_title:</label>
+                                <input type="text" class="form-control" id="{{ course_data[0].course_title }}"
+                                    value="{{ course_data[0].course_title }}" name="course_title">
 
-                                <label for="{{ User_data[0].mail }}" class="form-label" style="color:grey">Edit
-                                    email:</label>
-                                <input type="{{ User_data[0].mail }}" class="form-control mb-2"
-                                    id="{{ User_data[0].mail }}" disabled value="{{ User_data[0].mail }}">
-                                <input hidden type="{{ User_data[0].mail }}" name="email" class="form-control"
-                                    value="{{ User_data[0].mail }}" readonly>
+                                <label for="{{ course_data[0].course_description }}" class="form-label" style="color:grey">Edit Course Duration:</label>
+                                <textarea class="form-control" id="{{ course_data[0].course_description }}" rows="5" maxlength="500" required name="course_description">{{ course_data[0].course_description }}</textarea>
 
+                                <label for="course_price" class="form-label" style="color:grey">Course Price</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="course_price" required name="course_price" value="{{ course_data[0].course_price }}"><span
+                                        class="input-group-text">$</span>
+                                </div>
+                                <div class="input-group" style="margin-top: 1%;">
+                                    <input type="number" class="form-control" id="RuntimeHours"
+                                        name="RuntimeHours" placeholder="Hours" min="0" required value="{{ course_data[0].course_duration // 60 }}">
+                                    <span class="input-group-text">Hours</span>
 
-                                <label for="{{ User_data[0].phone }}" class="form-label" style="color:grey">Edit
-                                    phone:</label>
-                                <input type="{{ User_data[0].phone }}" class="form-control"
-                                    id="{{ User_data[0].phone }}" value="{{ User_data[0].phone }}" name="phone">
-                        </form>
+                                    <input type="number" class="form-control" id="RuntimeMinutes"
+                                        name="RuntimeMinutes" placeholder="Minutes" min="0" required value="{{ course_data[0].course_duration % 60 }}">
+                                    <span class="input-group-text">Minutes</span>
+                                </div>
+
+                                <label for="{{ course_data[0].course_rating }}" class="form-label" style="color:grey">Edit
+                                    course_rating:</label>
+                                <input type="text" class="form-control" id="{{ course_data[0].course_rating }}"
+                                    value="{{ course_data[0].course_rating }}" name="course_rating">
+
+                                <label for="{{ course_data[0].course_image }}" class="form-label" style="color:grey">Edit
+                                    course_image:</label>
+                                <input type="text" class="form-control" id="{{ course_data[0].course_image }}"
+                                    value="{{ course_data[0].course_image }}" name="course_image">
+
+                                <label for="{{ course_data[0].course_publish_date }}" class="form-label" style="color:grey">Course Publish Date</label>
+                                <input type="date" class="form-control mb-2" id="{{ course_data[0].course_publish_date }}" required name="course_publish_date" value="{{ course_data[0].course_publish_date }}">
                         <div class="modal-footer" style="margin-top: 2%;">
                             <a role="button" class="btn btn-success mx-2"
                                 href="{{ url_for('Manage_users.manage_users') }}">Back</a>

@@ -19,203 +19,22 @@ type="image/x-icon"{% endblock %}
         </div>
         <div class="container text-center" style="margin-top: 2%;">
             <div class="row">
+              {% for courses_data in course_data %}
                 <div class="col">
-                    <div class="card" style="width: 25rem;">
-                        <!-- <img src="https://swiftenglishhub.files.wordpress.com/2019/08/level-1-cover-photo.jpg?w=2076&h=1152&crop=1" class="card-img-top" alt=""> -->
-                        <img src="{{ url_for('static', filename='images/img/r-23.png') }}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <div class="row align-items-start">
-                                  <div class="col">
-                                    <span class="fw-bold fs-5"><a href="">Ape world full class</a></span>
-                                  </div>
+                  <div class="card" style="width: 25rem;">
+                      <img src="{{ courses_data.course_image }}" alt="" height="220px">
+                      <div class="card-body">
+                          <div class="container text-center">
+                              <div class="row align-items-start">
+                                <div class="col">
+                                  <span class="fw-bold fs-5"><a href="/course_detailed?course_id={{ courses_data.course_id }}">{{ courses_data.course_title }}</a></span>
                                 </div>
-                            </div>
-                        </div>
+                              </div>
+                          </div>
                       </div>
+                  </div>
                 </div>
-
-                <div class="col">
-                    <div class="card" style="width: 25rem;">
-                        <img src="{{ url_for('static', filename='images/img/r-24.png') }}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <div class="row align-items-start">
-                                  <div class="col">
-                                    <span class="fw-bold fs-5"><a href="">One-on-one course</a></span>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                </div>
-
-                <div class="col">
-                    <div class="card" style="width: 25rem;">
-                        <img src="{{ url_for('static', filename='images/img/r-25.png') }}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <div class="row align-items-start">
-                                  <div class="col">
-                                    <span class="fw-bold fs-5"><a href="">Apeline offline courses</a></span>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div style="margin-top: 4%;">
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <span class="fw-bold fs-4"> Take the PTE introductory course </span>
-            </div>
-
-            <div class="col" style="margin-top: 1%;">
-                <nav style="--bs-breadcrumb-divider: '';" aria-label="breadcrumb">
-                    <ol class="breadcrumb text-center">
-                      <li class="breadcrumb-item"><a href="#">Spoken Language</a></li>
-                      <li class="breadcrumb-item"><a href="#">Writing</a></li>
-                      <li class="breadcrumb-item"><a href="#">Read</a></li>
-                      <li class="breadcrumb-item"><a href="#">Hearing</a></li>
-                      <li class="breadcrumb-item"><span><a href="">See More</a><i class="bi bi-chevron-right"></i></span></li>
-                    </ol>
-                </nav>
-            </div>
-        </div>
-
-        <div class="container text-center" style="margin-top: 2%;">
-            <div class="row">
-                <div class="col" style="margin-right: 4.7%;">
-                    <div class="card" style="width: 15rem;">
-                        <!-- <img src="https://swiftenglishhub.files.wordpress.com/2019/08/level-1-cover-photo.jpg?w=2076&h=1152&crop=1" class="card-img-top" alt=""> -->
-                        <img src="{{ url_for('static', filename='images/img/r-23.png') }}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <div class="row align-items-start">
-                                  <div class="col">
-                                    <span class="fw-bold fs-5"><a href="">Ape world full class</a></span>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                </div>
-
-                <div class="col" style="margin-right: 4.7%;">
-                    <div class="card" style="width: 15rem;">
-                        <img src="{{ url_for('static', filename='images/img/r-24.png') }}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <div class="row align-items-start">
-                                  <div class="col">
-                                    <span class="fw-bold fs-5"><a href="">One-on-one course</a></span>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                </div>
-
-                <div class="col" style="margin-right: 4.7%;">
-                    <div class="card" style="width: 15rem;">
-                        <img src="{{ url_for('static', filename='images/img/r-25.png') }}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <div class="row align-items-start">
-                                  <div class="col">
-                                    <span class="fw-bold fs-5"><a href="">Apeline offline courses</a></span>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                
-                <div class="col">
-                    <div class="card" style="width: 15rem;">
-                        <img src="{{ url_for('static', filename='images/img/r-25.png') }}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <div class="row align-items-start">
-                                  <div class="col">
-                                    <span class="fw-bold fs-5"><a href="">Apeline offline courses</a></span>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container text-center" style="margin-top: 2%;">
-            <div class="row">
-                <div class="col" style="margin-right: 4.7%;">
-                    <div class="card" style="width: 15rem;">
-                        <!-- <img src="https://swiftenglishhub.files.wordpress.com/2019/08/level-1-cover-photo.jpg?w=2076&h=1152&crop=1" class="card-img-top" alt=""> -->
-                        <img src="{{ url_for('static', filename='images/img/r-23.png') }}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <div class="row align-items-start">
-                                  <div class="col">
-                                    <span class="fw-bold fs-5"><a href="">Ape world full class</a></span>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                </div>
-
-                <div class="col" style="margin-right: 4.7%;">
-                    <div class="card" style="width: 15rem;">
-                        <img src="{{ url_for('static', filename='images/img/r-24.png') }}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <div class="row align-items-start">
-                                  <div class="col">
-                                    <span class="fw-bold fs-5"><a href="">One-on-one course</a></span>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                </div>
-
-                <div class="col" style="margin-right: 4.7%;">
-                    <div class="card" style="width: 15rem;">
-                        <img src="{{ url_for('static', filename='images/img/r-25.png') }}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <div class="row align-items-start">
-                                  <div class="col">
-                                    <span class="fw-bold fs-5"><a href="">Apeline offline courses</a></span>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                </div>
-                
-                <div class="col">
-                    <div class="card" style="width: 15rem;">
-                        <img src="{{ url_for('static', filename='images/img/r-25.png') }}" class="card-img-top" alt="">
-                        <div class="card-body">
-                            <div class="container text-center">
-                                <div class="row align-items-start">
-                                  <div class="col">
-                                    <span class="fw-bold fs-5"><a href="">Apeline offline courses</a></span>
-                                  </div>
-                                </div>
-                            </div>
-                        </div>
-                      </div>
-                </div>
+              {% endfor %}
             </div>
         </div>
     </div>

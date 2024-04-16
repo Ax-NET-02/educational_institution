@@ -27,7 +27,7 @@ type="image/x-icon"{% endblock %}
                         style="font-size: 13px;" onclick="ClearFields();">Cancel</a></button>
                 {% if session['permission_name'] in ['admin', 'service']%}
                 <a href="{{ url_for('Manages_course.add_course') }}" role="button" style="font-size:13px;" class="btn btn-outline-dark mx-2">
-                    <i class="bi bi-pencil-square"></i>Add User
+                    <i class="bi bi-pencil-square"></i>Add Course
                 </a>
                 {% endif %}
             </div>
@@ -77,28 +77,28 @@ type="image/x-icon"{% endblock %}
                                 <!---Delete--->
                                 <button type="button" class="btn btn-warning mt-2" style="font-size: 10px;"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#exampleStaff">Delete</button>
-                                <div class="modal fade" id="exampleStaff"
-                                    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    data-bs-target="#exampleStaff{{ course_datas['course_id'] }}">Delete</button>
+                                <div class="modal fade" id="exampleStaff{{ course_datas['course_id'] }}"
+                                    tabindex="-1" aria-labelledby="exampleModalLabel{{ course_datas['course_id'] }}" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
-                                                <h1 class="modal-title fs-5" id="exampleModalLabel">Confirm Deletion
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel{{ course_datas['course_id'] }}">Confirm Deletion
                                                 </h1>
                                                 <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Are you sure you want to delete user <span style="color: blue;">
-                                                    userid-?</span>
+                                                <p>Are you sure you want to delete course <span style="color: blue;">
+                                                    course_id-{{ course_datas['course_id'] }}?</span>
                                                 </p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
                                                 <a type="button" class="btn btn-warning"
-                                                    href="/Delete_users?user_id="
-                                                    id="exampleStaff">Delete</a>
+                                                    href="/delete_course?course_id={{ course_datas['course_id'] }}"
+                                                    id="exampleStaff{{ course_datas['course_id'] }}">Delete</a>
                                             </div>
                                         </div>
                                     </div>

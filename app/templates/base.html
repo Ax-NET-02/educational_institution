@@ -52,11 +52,11 @@
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="" alt="{{ session['admin_name'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK16UmABGddL94OZXwjHSudU3WwTnbQNjQoQ&s" alt="{{ session['admin_name'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ url_for('Manage_users.manage_users') }}">Manage_users</a></li>
-              <li><a class="dropdown-item" href="#">Manage_course</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('Manages_course.manages_course') }}">Manage_course</a></li>
               <li><a class="dropdown-item" href="#">Manage_community</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Welcome {{ session['admin_name'] }}!</a></li>
@@ -72,11 +72,11 @@
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="" alt="{{ session['service'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK16UmABGddL94OZXwjHSudU3WwTnbQNjQoQ&s" alt="{{ session['service'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ url_for('Manage_users.manage_users') }}">Manage_users</a></li>
-              <li><a class="dropdown-item" href="#">Manage_course</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('Manages_course.manages_course') }}">Manage_course</a></li>
               <li><a class="dropdown-item" href="#">Manage_community</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="#">Welcome {{ session['service_name'] }}!</a></li>
