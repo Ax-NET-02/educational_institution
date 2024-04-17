@@ -22,6 +22,7 @@ def login_data():
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             admin_sql = """
                 SELECT
+                    admin.admin_id,
                     admin.admin_name, 
                     admin.admin_mail, 
                     admin.admin_password, 
@@ -41,6 +42,7 @@ def login_data():
                     session['loggedin'] = True  
                     session['admin_name'] = admin_accounts['admin_name']
                     session['permission_name'] = admin_accounts['permission_name']
+                    session['admin_name'] = admin_accounts['admin_name']
                     flash(f"Login successful, welcome-{admin_accounts['admin_name']}", "success")
                     return redirect(url_for('home.index'))                    
                 else:
@@ -56,6 +58,7 @@ def login_data():
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             service_sql = """
                 SELECT
+                    service.service_id,
                     service.service_name, 
                     service.service_email, 
                     service.service_password, 
@@ -74,6 +77,7 @@ def login_data():
                 if bcrypt.checkpw(service_password.encode('utf-8'), service_accounts['service_password'].encode('utf-8')): #check passwords if match
                     session['loggedin'] = True 
                     session['service_name'] = service_accounts['service_name']
+                    session['service_id'] = service_accounts['service_id']
                     session['permission_name'] = service_accounts['permission_name'] 
                     session['service_email'] = service_accounts['service_email']
                     flash(f"Login successful, welcome-{service_accounts['service_name']}", "success")
@@ -90,6 +94,7 @@ def login_data():
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             service_sql = """
                 SELECT
+                    users.user_id, 
                     users.user_name, 
                     users.user_mail, 
                     users.user_password, 
@@ -110,6 +115,7 @@ def login_data():
                 if bcrypt.checkpw(user_password.encode('utf-8'), user_accounts['user_password'].encode('utf-8')): #check passwords if match
                     session['loggedin'] = True 
                     session['user_name'] = user_accounts['user_name']
+                    session['user_id'] = user_accounts['user_id']
                     session['permission_name'] = user_accounts['permission_name'] 
                     session['user_mail'] = user_accounts['user_mail']
                     flash(f"Login successful, welcome-{user_accounts['user_name']}", "success")

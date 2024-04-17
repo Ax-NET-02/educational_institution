@@ -17,204 +17,106 @@ type="image/x-icon"{% endblock %}
           <div class="col-6 col-md-8" style="margin-top: 4%;">
             <div class="row g-5">
                 <div class="col-md-5 col-lg-4 order-md-last">
-                  <h4 class="d-flex justify-content-between align-items-center mb-3">
-                    <span class="text-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">你的购物车</font></font></span>
-                    <span class="badge bg-primary rounded-pill"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">3</font></font></span>
-                  </h4>
-                  <ul class="list-group mb-3">
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                      <div>
-                        <h6 class="my-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">产品名称</font></font></h6>
-                        <small class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简要描述;简介</font></font></small>
-                      </div>
-                      <span class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12 美元</font></font></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                      <div>
-                        <h6 class="my-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第二个产品</font></font></h6>
-                        <small class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简要描述;简介</font></font></small>
-                      </div>
-                      <span class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">8 美元</font></font></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between lh-sm">
-                      <div>
-                        <h6 class="my-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">第三项</font></font></h6>
-                        <small class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简要描述;简介</font></font></small>
-                      </div>
-                      <span class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">5 美元</font></font></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
-                      <div class="text-success">
-                        <h6 class="my-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">促销代码</font></font></h6>
-                        <small><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">示例代码</font></font></small>
-                      </div>
-                      <span class="text-success"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">−$5</font></font></span>
-                    </li>
-                    <li class="list-group-item d-flex justify-content-between">
-                      <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">总计（美元）</font></font></span>
-                      <strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20 美元</font></font></strong>
-                    </li>
-                  </ul>
-          
-                  <form class="card p-2">
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="促销代码">
-                      <button type="submit" class="btn btn-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">赎回</font></font></button>
+                  <div class="bg-body-tertiary rounded-4">
+                    <div style="padding-top: 4%; padding-left: 10%; padding-right: 8%;">
+                      <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-primary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Shopping Cart</font></font></span>
+                        <span class="badge bg-primary rounded-pill"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">1</font></font></span>
+                      </h4>
                     </div>
-                  </form>
+                    <div style="margin-left: 4%; margin-right: 4%; padding-bottom: 4%;">
+                      <ul class="list-group mb-3">
+                        <li class="list-group-item d-flex justify-content-between lh-sm">
+                          <div>
+                            <h6 class="my-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Course Title</font></font></h6>
+                            <small class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简要描述;简介</font></font></small>
+                          </div>
+                          <span class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12 美元</font></font></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between">
+                          <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">总计（美元）</font></font></span>
+                          <strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20 美元</font></font></strong>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
                 </div>
                 <div class="col-md-7 col-lg-8">
-                  <h4 class="mb-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">帐单地址</font></font></h4>
-                  <form class="needs-validation" novalidate="">
+                  <h4 class="mb-3">Billing address</h4>
+                  <form class="needs-validation was-validated" novalidate="">
                     <div class="row g-3">
-                      <div class="col-sm-6">
-                        <label for="firstName" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">名</font></font></label>
-                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required="">
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          需要有效的名字。
-                        </font></font></div>
-                      </div>
-          
-                      <div class="col-sm-6">
-                        <label for="lastName" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">姓</font></font></label>
-                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required="">
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          需要有效的姓氏。
-                        </font></font></div>
-                      </div>
-          
                       <div class="col-12">
-                        <label for="username" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">用户名</font></font></label>
-                        <div class="input-group has-validation">
-                          <span class="input-group-text"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">@</font></font></span>
-                          <input type="text" class="form-control" id="username" placeholder="用户名" required="">
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                            您的用户名是必需的。
-                          </font></font></div>
+                        <label for="username" class="form-label">username</label>
+                        <input type="text" class="form-control" id="username" value="" required="" name="username">
+                        <div class="invalid-feedback">
+                          A valid username is required.
+                        </div>
+                      </div>
+
+                      <div class="col-12">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="you@educational.com" value="" required="" name="email">
+                        <div class="invalid-feedback">
+                          Please enter a valid email address.
                         </div>
                       </div>
           
                       <div class="col-12">
-                        <label for="email" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">电子邮件</font></font><span class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（可选）</font></font></span></label>
-                        <input type="email" class="form-control" id="email" placeholder="你@example.com">
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          请输入有效的电子邮件地址以获取运送更新信息。
-                        </font></font></div>
-                      </div>
-          
-                      <div class="col-12">
-                        <label for="address" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地址</font></font></label>
-                        <input type="text" class="form-control" id="address" placeholder="主街1234号" required="">
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          请输入您的送货地址。
-                        </font></font></div>
-                      </div>
-          
-                      <div class="col-12">
-                        <label for="address2" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">地址2 </font></font><span class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">（可选）</font></font></span></label>
-                        <input type="text" class="form-control" id="address2" placeholder="公寓或套房">
-                      </div>
-          
-                      <div class="col-md-5">
-                        <label for="country" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">国家</font></font></label>
-                        <select class="form-select" id="country" required="">
-                          <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选择...</font></font></option>
-                          <option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">美国</font></font></option>
-                        </select>
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          请选择一个有效的国家/地区。
-                        </font></font></div>
-                      </div>
-          
-                      <div class="col-md-4">
-                        <label for="state" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">状态</font></font></label>
-                        <select class="form-select" id="state" required="">
-                          <option value=""><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">选择...</font></font></option>
-                          <option><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">加利福尼亚州</font></font></option>
-                        </select>
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          请提供有效的状态。
-                        </font></font></div>
-                      </div>
-          
-                      <div class="col-md-3">
-                        <label for="zip" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">压缩</font></font></label>
-                        <input type="text" class="form-control" id="zip" placeholder="" required="">
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          需要邮政编码。
-                        </font></font></div>
+                        <label for="Phone" class="form-label">Phone</label>
+                        <input type="text" class="form-control" id="Phone" value="" required="" name="phone">
+                        <div class="invalid-feedback">
+                          Please enter a valid phone number.
+                        </div>
                       </div>
                     </div>
           
-                    <hr class="my-4">
-          
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="same-address">
-                      <label class="form-check-label" for="same-address"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">送货地址与我的帐单地址相同</font></font></label>
-                    </div>
-          
-                    <div class="form-check">
-                      <input type="checkbox" class="form-check-input" id="save-info">
-                      <label class="form-check-label" for="save-info"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">保存此信息以供下次使用</font></font></label>
-                    </div>
-          
-                    <hr class="my-4">
-          
-                    <h4 class="mb-3"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">支付</font></font></h4>
+                    <h4 class="mb-3">Payment</h4>
           
                     <div class="my-3">
                       <div class="form-check">
-                        <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
-                        <label class="form-check-label" for="credit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">信用卡</font></font></label>
-                      </div>
-                      <div class="form-check">
-                        <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
-                        <label class="form-check-label" for="debit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">借记卡</font></font></label>
-                      </div>
-                      <div class="form-check">
-                        <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="">
-                        <label class="form-check-label" for="paypal"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">贝宝</font></font></label>
+                        <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="" checked="">
+                        <label class="form-check-label" for="paypal">PayPal</label>
                       </div>
                     </div>
           
                     <div class="row gy-3">
                       <div class="col-md-6">
-                        <label for="cc-name" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">卡片上的名字</font></font></label>
+                        <label for="cc-name" class="form-label">Name on card</label>
                         <input type="text" class="form-control" id="cc-name" placeholder="" required="">
-                        <small class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">卡上显示的全名</font></font></small>
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          卡上姓名为必填项
-                        </font></font></div>
+                        <small class="text-body-secondary">Full name as displayed on card</small>
+                        <div class="invalid-feedback">
+                          Name on card is required
+                        </div>
                       </div>
           
                       <div class="col-md-6">
-                        <label for="cc-number" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">信用卡号码</font></font></label>
+                        <label for="cc-number" class="form-label">Credit card number</label>
                         <input type="text" class="form-control" id="cc-number" placeholder="" required="">
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          信用卡号码为必填项
-                        </font></font></div>
+                        <div class="invalid-feedback">
+                          Credit card number is required
+                        </div>
                       </div>
           
                       <div class="col-md-3">
-                        <label for="cc-expiration" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">到期日</font></font></label>
+                        <label for="cc-expiration" class="form-label">Expiration</label>
                         <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          需要有效期
-                        </font></font></div>
+                        <div class="invalid-feedback">
+                          Expiration date required
+                        </div>
                       </div>
           
                       <div class="col-md-3">
-                        <label for="cc-cvv" class="form-label"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">CVV</font></font></label>
+                        <label for="cc-cvv" class="form-label">CVV</label>
                         <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
-                        <div class="invalid-feedback"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
-                          需要安全码
-                        </font></font></div>
+                        <div class="invalid-feedback">
+                          Security code required
+                        </div>
                       </div>
                     </div>
           
                     <hr class="my-4">
           
-                    <button class="w-100 btn btn-primary btn-lg" type="submit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">继续结帐</font></font></button>
+                    <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
                   </form>
                 </div>
               </div>
