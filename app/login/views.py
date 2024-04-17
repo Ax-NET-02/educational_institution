@@ -39,7 +39,8 @@ def login_data():
             admin_accounts = cursor.fetchone()
             if admin_accounts:
                 if bcrypt.checkpw(admin_password.encode('utf-8'), admin_accounts['admin_password'].encode('utf-8')): #check passwords if match
-                    session['loggedin'] = True  
+                    session['loggedin'] = True
+                    session['admin_id'] = admin_accounts['admin_id']  
                     session['admin_name'] = admin_accounts['admin_name']
                     session['permission_name'] = admin_accounts['permission_name']
                     session['admin_name'] = admin_accounts['admin_name']

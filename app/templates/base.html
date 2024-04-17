@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
   <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/5.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.bootcdn.net/ajax/libs/bootstrap-icons/1.11.0/font/bootstrap-icons.min.css" rel="stylesheet">
   <link {% block link %}{% endblock %}>
@@ -38,14 +39,8 @@
         </ul>
         {% if 'loggedin' not in session %}
         <div class="text-end">
-          <button type="button" class="btn btn-outline-secondary me-2"><a
-              class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="{{ url_for('login.rendering_login') }}">Login</a>
-          </button>
-          <button type="button" class="btn btn-warning"><a
-              class="link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="{{ url_for('register.user_register') }}">Sign-up</a>
-          </button>
+          <a class="btn btn-outline-secondary me-2" href="{{ url_for('login.rendering_login') }}" role="button">Login</a>
+          <a class="btn btn-warning" href="{{ url_for('register.user_register') }}" role="button">Sign-up</a>
         </div>
         {% else %}
           {% if session['permission_name'] == 'admin' %}
@@ -59,53 +54,44 @@
               <li><a class="dropdown-item" href="{{ url_for('Manages_course.manages_course') }}">Manage_course</a></li>
               <li><a class="dropdown-item" href="#">Manage_community</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Welcome {{ session['admin_name'] }}!</a></li>
+              <li><a class="dropdown-item" href="/admin_dashboard">Welcome {{ session['admin_name'] }}!</a></li>
             </ul>
           </div>
           <div style="margin-left: 1%;">
-            <button type="button" class="btn btn-outline-secondary me-2"><a
-              class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="{{ url_for('logout.quit') }}">Logout</a>
-            </button>
+            <a class="btn btn-outline-secondary" href="{{ url_for('logout.quit') }}" role="button">Logout</a>
           </div>
           {% elif session['permission_name'] == 'service' %}
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK16UmABGddL94OZXwjHSudU3WwTnbQNjQoQ&s" alt="{{ session['service'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="https://www.wudada.online/dmtx/f55455b6610077bd421ffb9b988dea8e.webp" alt="{{ session['service'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ url_for('Manage_users.manage_users') }}">Manage_users</a></li>
               <li><a class="dropdown-item" href="{{ url_for('Manages_course.manages_course') }}">Manage_course</a></li>
               <li><a class="dropdown-item" href="#">Manage_community</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Welcome {{ session['service_name'] }}!</a></li>
+              <li><a class="dropdown-item" href="/service_dashboard">Welcome {{ session['service_name'] }}!</a></li>
             </ul>
           </div>
           <div style="margin-left: 1%;">
-            <button type="button" class="btn btn-outline-secondary me-2"><a
-              class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="{{ url_for('logout.quit') }}">Logout</a>
-            </button>
+            <a class="btn btn-outline-secondary" href="{{ url_for('logout.quit') }}" role="button">Logout</a>
           </div>
           {% else %}
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="" alt="{{ session['user'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="https://www.wudada.online//dmtx//ffd848cadd153618b2003483496bfb5a.webp" alt="{{ session['user'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="#">My_course</a></li>
               <li><a class="dropdown-item" href="#">My_community</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Welcome {{ session['user_name'] }}!</a></li>
+              <li><a class="dropdown-item" href="/user_dashboard">Welcome {{ session['user_name'] }}!</a></li>
             </ul>
           </div>
           <div style="margin-left: 1%;">
-            <button type="button" class="btn btn-outline-secondary me-2"><a
-              class="link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
-              href="{{ url_for('logout.quit') }}">Logout</a>
-            </button>
+            <a class="btn btn-outline-secondary" href="{{ url_for('logout.quit') }}" role="button">Logout</a>
           </div>
           {% endif %}
         {% endif %}

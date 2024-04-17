@@ -49,7 +49,7 @@ type="image/x-icon"{% endblock %}
 
                 <div style="margin-bottom: 2%;">
                   <a href="{{ url_for('course.courses')}}" class="btn btn-outline-success">Back</a>
-                  <a href="" class="btn btn-outline-primary">Buy a course<i class="bi bi-chevron-double-right"></i></a>
+                  <a href="/order?course_id={{ course_data[0].course_id }}" class="btn btn-outline-primary">Buy a course<i class="bi bi-chevron-double-right"></i></a>
                 </div>
               </div>
             </div>

@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Course{% endblock %}
+{% block title %}Order{% endblock %}
 
 {% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
 type="image/x-icon"{% endblock %}
@@ -15,8 +15,8 @@ type="image/x-icon"{% endblock %}
         <div class="row">
           <div class="col-6 col-md-2"></div>
           <div class="col-6 col-md-8" style="margin-top: 4%;">
-            <div class="row g-5">
-                <div class="col-md-5 col-lg-4 order-md-last">
+            <div class="row g-10">
+                <div class="col-md-6 col-lg-4 order-md-last">
                   <div class="bg-body-tertiary rounded-4">
                     <div style="padding-top: 4%; padding-left: 10%; padding-right: 8%;">
                       <h4 class="d-flex justify-content-between align-items-center mb-3">
@@ -28,14 +28,14 @@ type="image/x-icon"{% endblock %}
                       <ul class="list-group mb-3">
                         <li class="list-group-item d-flex justify-content-between lh-sm">
                           <div>
-                            <h6 class="my-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Course Title</font></font></h6>
-                            <small class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">简要描述;简介</font></font></small>
+                            <h6 class="my-0"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ course_data.course_title}}</font></font></h6>
+                            <small class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ course_data.course_description[:18] }}...</font></font></small>
                           </div>
-                          <span class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">12 美元</font></font></span>
+                          <span class="text-body-secondary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ course_data.course_price }} $</font></font></span>
                         </li>
                         <li class="list-group-item d-flex justify-content-between">
-                          <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">总计（美元）</font></font></span>
-                          <strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">20 美元</font></font></strong>
+                          <span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Total (USD)</font></font></span>
+                          <strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{ course_data.course_price }} $</font></font></strong>
                         </li>
                       </ul>
                     </div>
@@ -47,7 +47,7 @@ type="image/x-icon"{% endblock %}
                     <div class="row g-3">
                       <div class="col-12">
                         <label for="username" class="form-label">username</label>
-                        <input type="text" class="form-control" id="username" value="" required="" name="username">
+                        <input type="text" class="form-control" id="username" value="{{ order_user.user_name }}" required="" name="username">
                         <div class="invalid-feedback">
                           A valid username is required.
                         </div>
@@ -55,7 +55,7 @@ type="image/x-icon"{% endblock %}
 
                       <div class="col-12">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="you@educational.com" value="" required="" name="email">
+                        <input type="email" class="form-control" id="email" value="{{ order_user.user_mail }}" required="" name="email">
                         <div class="invalid-feedback">
                           Please enter a valid email address.
                         </div>
@@ -63,14 +63,14 @@ type="image/x-icon"{% endblock %}
           
                       <div class="col-12">
                         <label for="Phone" class="form-label">Phone</label>
-                        <input type="text" class="form-control" id="Phone" value="" required="" name="phone">
+                        <input type="text" class="form-control" id="Phone" value="{{ order_user.user_number }}" required="" name="phone">
                         <div class="invalid-feedback">
                           Please enter a valid phone number.
                         </div>
                       </div>
                     </div>
           
-                    <h4 class="mb-3">Payment</h4>
+                    <h4 class="mb-3" style="margin-top: 2%;">Payment</h4>
           
                     <div class="my-3">
                       <div class="form-check">
@@ -96,15 +96,7 @@ type="image/x-icon"{% endblock %}
                           Credit card number is required
                         </div>
                       </div>
-          
-                      <div class="col-md-3">
-                        <label for="cc-expiration" class="form-label">Expiration</label>
-                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
-                        <div class="invalid-feedback">
-                          Expiration date required
-                        </div>
-                      </div>
-          
+
                       <div class="col-md-3">
                         <label for="cc-cvv" class="form-label">CVV</label>
                         <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
@@ -117,6 +109,9 @@ type="image/x-icon"{% endblock %}
                     <hr class="my-4">
           
                     <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout</button>
+                    <div style="margin-top: 2%;">
+                      <a href="course_detailed?course_id={{ course_data.course_id }}" class="w-100 btn btn-outline-success">Back</a>
+                    </div>
                   </form>
                 </div>
               </div>
