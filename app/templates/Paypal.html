@@ -43,7 +43,7 @@ type="image/x-icon"{% endblock %}
                 </div>
                 <div class="col-md-7 col-lg-8">
                   <h4 class="mb-3">Billing address</h4>
-                  <form class="needs-validation was-validated" novalidate="">
+                  <form class="needs-validation was-validated" action="{{ url_for('order.Place_an_order') }}" method="post">
                     <div class="row g-3">
                       <div class="col-12">
                         <label for="username" class="form-label">username</label>
@@ -69,7 +69,9 @@ type="image/x-icon"{% endblock %}
                         </div>
                       </div>
                     </div>
-          
+
+                    <input type="text" style="visibility: hidden;" name="course_id" value="{{ course_data.course_id }}">
+
                     <h4 class="mb-3" style="margin-top: 2%;">Payment</h4>
           
                     <div class="my-3">
@@ -82,7 +84,7 @@ type="image/x-icon"{% endblock %}
                     <div class="row gy-3">
                       <div class="col-md-6">
                         <label for="cc-name" class="form-label">Name on card</label>
-                        <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+                        <input type="text" class="form-control" id="cc-name" placeholder="" required="" name="cc_name">
                         <small class="text-body-secondary">Full name as displayed on card</small>
                         <div class="invalid-feedback">
                           Name on card is required
@@ -91,7 +93,7 @@ type="image/x-icon"{% endblock %}
           
                       <div class="col-md-6">
                         <label for="cc-number" class="form-label">Credit card number</label>
-                        <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+                        <input type="text" class="form-control" id="cc-number" placeholder="" required="" name="cc_number">
                         <div class="invalid-feedback">
                           Credit card number is required
                         </div>
@@ -99,7 +101,7 @@ type="image/x-icon"{% endblock %}
 
                       <div class="col-md-3">
                         <label for="cc-cvv" class="form-label">CVV</label>
-                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required="" name="cc_cvv">
                         <div class="invalid-feedback">
                           Security code required
                         </div>

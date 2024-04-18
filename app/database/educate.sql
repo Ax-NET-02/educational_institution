@@ -68,11 +68,17 @@ CREATE TABLE IF NOT EXISTS courses (
 
 CREATE TABLE IF NOT EXISTS orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
-    course_id INT,
-    order_price DECIMAL(10, 2),
+    username VARCHAR(50) NOT NULL,
+    email VARCHAR(50) NOT NULL,
+    phone VARCHAR(20) NOT NULL,
+    cc_name VARCHAR(50) NOT NULL,
+    cc_number VARCHAR(16) NOT NULL,
+    cc_cvv VARCHAR(4) NOT NULL,
     order_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    user_id INT
+    payment_amount DECIMAL(10, 2) NOT NULL
 );
+
+
 
 
 
