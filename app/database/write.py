@@ -57,17 +57,7 @@ for index, row in permissions.iterrows():
     parameters = (row['permission_id'], row['permission_name'])
     insert(sql, parameters)
     
-messages = pandas.read_csv('messages.csv')
-for index, row in messages.iterrows():
-    sql = """
-        INSERT INTO messages (message_id, user_id, service_id, user_message_content, service_message_content, user_sent_time, service_sent_time)
-        VALUES
-        (%s, %s, %s, %s, %s, %s, %s)
-    """
-    parameters = (row['message_id'], row['user_id'], row['service_id'], row['user_message_content'], row['service_message_content'], row['user_sent_time'], row['service_sent_time'])
-    insert(sql, parameters)
-    
-    
+     
 users = pandas.read_csv('users.csv')
 for index, row in users.iterrows():
     sql = """
@@ -83,22 +73,11 @@ for index, row in users.iterrows():
 courses = pandas.read_csv('courses.csv')
 for index, row in courses.iterrows():
     sql = """
-        INSERT INTO courses (course_id, course_title , course_description, course_price, course_duration, course_rating, course_image, course_publish_date, publisher_name)
+        INSERT INTO courses (course_title , course_description, course_price, course_duration, course_rating, course_image, course_publish_date, publisher_name)
         VALUES
-        (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+        (%s, %s, %s, %s, %s, %s, %s, %s)
     """
     
-    parameters = (row['course_id'], row['course_title'], row['course_description'], row['course_price'], row['course_duration'], row['course_rating'], row['course_image'], row['course_publish_date'], row['publisher_name'])
+    parameters = (row['course_title'], row['course_description'], row['course_price'], row['course_duration'], row['course_rating'], row['course_image'], row['course_publish_date'], row['publisher_name'])
     insert(sql, parameters)
  
- 
-orders = pandas.read_csv('orders.csv')
-for index, row in orders.iterrows():
-    sql = """
-        INSERT INTO orders (order_id, course_id, order_price, order_date, user_id)
-        VALUES
-        (%s, %s, %s, %s, %s)
-    """
-    
-    parameters = (row['order_id'], row['course_id'], row['order_price'], row['order_date'], row['user_id'])
-    insert(sql, parameters)

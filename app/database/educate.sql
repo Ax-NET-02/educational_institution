@@ -33,17 +33,6 @@ CREATE TABLE IF NOT EXISTS users (
     permission_id INT NOT NULL
 );
 
--- 创建消息表
-CREATE TABLE IF NOT EXISTS messages (
-    message_id INT PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
-    service_id INT,
-    user_message_content TEXT NOT NULL,
-    service_message_content TEXT NOT NULL,
-    user_sent_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    service_sent_time TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
-
 -- 创建管理员表
 CREATE TABLE IF NOT EXISTS admin (
     admin_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -69,6 +58,7 @@ CREATE TABLE IF NOT EXISTS courses (
 CREATE TABLE IF NOT EXISTS orders (
     order_id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(50) NOT NULL,
+    user_id INT NOT NULL,
     email VARCHAR(50) NOT NULL,
     phone VARCHAR(20) NOT NULL,
     cc_name VARCHAR(50) NOT NULL,
@@ -78,7 +68,14 @@ CREATE TABLE IF NOT EXISTS orders (
     payment_amount DECIMAL(10, 2) NOT NULL
 );
 
-
+CREATE TABLE IF NOT EXISTS questions (
+    question_id INT PRIMARY KEY AUTO_INCREMENT,
+    title VARCHAR(255) NOT NULL,
+    content TEXT NOT NULL,
+    publisher_name VARCHAR(50) NOT NULL,
+    publisher_id INT NOT NULL,
+    publish_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 
 
 

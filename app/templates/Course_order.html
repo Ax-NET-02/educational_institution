@@ -10,5 +10,88 @@ type="image/x-icon"{% endblock %}
 {% endblock %}
 
 {% block body %}
+<main>
+    <div class="container d-flex justify-content-end mt-5"
+        style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
+        <h1>My Order</h1>
+    </div>
+    <!----Search and add movie---->
+    <div class="container d-flex">
+        <div class="input-group mb-3">
+            <label for="allMovies"></label>
+            <input type="text" id="myInput" onkeyup="myFunction()"
+                placeholder="Search for user (User Name, Email, Phone)" class="form-control border-secondary">
+            <div>
+                <button type="submit" class="btn btn-secondary"><i class="bi bi-search"></i></button>
+                <button type="submit" class="btn btn-dark"><a href="#" class="text-decoration-none text-white"
+                        style="font-size: 13px;" onclick="ClearFields();">Cancel</a></button>
+            </div>
 
+        </div>
+    </div>
+
+    <!-- table: all the movies -->
+    <div class="d-flex justify-content-center container">
+        <div class="shadow p-3 mb-5 bg-body-tertiary rounded">
+            <div class="table-responsive">
+                <table class="table align-middle table-bordered" id="myTable">
+                    <!-- tablr headers -->
+                    <thead class="table-dark text-light">
+                        <th>Order ID</th>
+                        <th>User Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Order Date</th>
+                        <th>Payment Amount</th>
+                        <th>Delete</th>
+                    </thead>
+
+                    <tbody>
+                        {% for order_datas in order_data %}
+                        <tr>
+                            <td class="col-md-2" style="font-size: 13px;">{{ order_datas.order_id }}</td>
+                            <td class="col-md-2" style="font-size: 13px;">{{ order_datas.username }}</td>
+                            <td class="col-md-2" style="font-size: 13px;">{{ order_datas.email }}</td>
+                            <td class="col-md-2" style="font-size: 13px;">{{ order_datas.phone }}</td>
+                            <td class="col-md-2" style="font-size: 13px;">{{ order_datas.order_date.strftime('%Y-%m-%d') }}</td>
+                            <td class="col-md-2" style="font-size: 13px;">{{ order_datas.payment_amount }}</td>
+                            <td>
+                                <!---Delete--->
+                                <button type="button" class="btn btn-danger mt-2" style="font-size: 10px;"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#exampleStaff{{ order_datas['order_id'] }}">Delete</button>
+                                <div class="modal fade" id="exampleStaff{{ order_datas['order_id'] }}"
+                                    tabindex="-1" aria-labelledby="exampleModalLabel{{ order_datas['order_id'] }}" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h1 class="modal-title fs-5" id="exampleModalLabel{{ order_datas['order_id'] }}">Confirm Deletion
+                                                </h1>
+                                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                    aria-label="Close"></button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Are you sure you want to delete order <span style="color: blue;">
+                                                    order_id-{{ order_datas['order_id'] }}?</span>
+                                                </p>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary"
+                                                    data-bs-dismiss="modal">Close</button>
+                                                <a type="button" class="btn btn-danger"
+                                                    href="/Delete_order?order_id={{ order_datas['order_id'] }}"
+                                                    id="exampleStaff{{ order_datas['order_id'] }}">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</main>
 {% endblock %}

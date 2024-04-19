@@ -77,9 +77,22 @@ def Place_an_order():
     cc_name = request.form['cc_name'].strip()
     cc_number = request.form['cc_number'].strip()
     cc_cvv = request.form['cc_cvv'].strip()
+    current_date = date.today()
+    order_date = current_date.strftime('%Y-%m-%d')
+    payment_amount = request.form['payment_amount'].strip()
     if len(cc_number) == 16 and cc_number.isdigit():
         if len(cc_cvv) == 3 and cc_cvv.isdigit():
-            return f'{username}, {email}, {phone}, {cc_name}, {cc_number}, {cc_cvv}'
+            cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+            write_sql = """
+                INSERT INTO orders (username, user_id, email, phone, cc_name, cc_number, cc_cvv, order_date, payment_amount)
+                VALUES
+                    (%s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """
+            order_data = (username, user_id, email, phone, cc_name, cc_number, cc_cvv, order_date, payment_amount)
+            cursor.execute(write_sql, order_data)
+            mysql.connection.commit()
+            flash("Purchase successful. Thank you for your patronage.", "success")
+            return redirect(url_for('Course_order.course_order'))
         else:
             flash("Please enter the 3-digit security code correctly", "danger")
             return render_template('Paypal.html', order_user=order_user, course_data=course_data)

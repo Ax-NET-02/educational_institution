@@ -69,7 +69,8 @@ type="image/x-icon"{% endblock %}
                         </div>
                       </div>
                     </div>
-
+                    
+                    <input type="text" style="visibility: hidden;" name="payment_amount" value="{{ course_data.course_price }}">
                     <input type="text" style="visibility: hidden;" name="course_id" value="{{ course_data.course_id }}">
 
                     <h4 class="mb-3" style="margin-top: 2%;">Payment</h4>

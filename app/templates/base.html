@@ -84,7 +84,7 @@
               <img src="https://www.wudada.online//dmtx//ffd848cadd153618b2003483496bfb5a.webp" alt="{{ session['user'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">My_course</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('Course_order.course_order') }}">My_course</a></li>
               <li><a class="dropdown-item" href="#">My_community</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="/user_dashboard">Welcome {{ session['user_name'] }}!</a></li>
