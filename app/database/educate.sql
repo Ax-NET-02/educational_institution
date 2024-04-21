@@ -20,7 +20,8 @@ CREATE TABLE IF NOT EXISTS customer_service (
     service_password VARCHAR(255) NOT NULL,
     service_email VARCHAR(50) NOT NULL,
     service_number VARCHAR(50) NOT NULL,
-    permission_id INT NOT NULL
+    permission_id INT NOT NULL,
+    service_img VARCHAR(255) NOT NULL
 );
 
 -- 创建用户表
@@ -30,7 +31,8 @@ CREATE TABLE IF NOT EXISTS users (
     user_mail VARCHAR(50) NOT NULL,
     user_number VARCHAR(50) NOT NULL,
     user_password VARCHAR(255) NOT NULL,
-    permission_id INT NOT NULL
+    permission_id INT NOT NULL,
+    user_img VARCHAR(255) NOT NULL
 );
 
 -- 创建管理员表
@@ -39,7 +41,8 @@ CREATE TABLE IF NOT EXISTS admin (
     admin_name VARCHAR(50) NOT NULL,
     admin_mail VARCHAR(50) NOT NULL,
     admin_password VARCHAR(64) NOT NULL,
-    permission_id INT NOT NULL
+    permission_id INT NOT NULL,
+    admin_img VARCHAR(255) NOT NULL
 );
 
 -- 创建课程表
@@ -78,11 +81,12 @@ CREATE TABLE IF NOT EXISTS questions (
 );
 
 
+CREATE TABLE IF NOT EXISTS comments (
+    comment_id INT PRIMARY KEY AUTO_INCREMENT,
+    comment_content TEXT NOT NULL,
+    commenter_name VARCHAR(50) NOT NULL,
+    question_id INT NOT NULL,
+    FOREIGN KEY (question_id) REFERENCES questions(question_id)
+);
 
 
--- 添加外键约束
--- ALTER TABLE customer_service ADD FOREIGN KEY (permission_id) REFERENCES permissions(permission_id);
--- ALTER TABLE customer_service ADD FOREIGN KEY (message_id) REFERENCES messages(message_id);
--- ALTER TABLE users ADD FOREIGN KEY (permission_id) REFERENCES permissions(permission_id);
--- ALTER TABLE users ADD FOREIGN KEY (message_id) REFERENCES messages(message_id);
--- ALTER TABLE admin ADD FOREIGN KEY (permission_id) REFERENCES permissions(permission_id);

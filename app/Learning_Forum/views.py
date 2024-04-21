@@ -23,4 +23,21 @@ def forum():
 
 @LearningForum.route('/forum_detailed')
 def forum_detailed():
-    return render_template('forum_detailed.html')
+    question_id = request.args.get("question_id")
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    sql = """
+        SELECT
+            questions.*
+        FROM
+            questions
+        WHERE
+            questions.question_id = %s
+    """
+    cursor.execute(sql, question_id)
+    forum_detailed = cursor.fetchall()
+    print(forum_detailed)
+    return render_template('forum_detailed.html', forum_detailed=forum_detailed)
+
+@LearningForum.route('/comment')
+def comment():
+    pass

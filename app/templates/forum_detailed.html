@@ -14,15 +14,15 @@ type="image/x-icon"{% endblock %}
 <div class="row" style="margin-top: 101px;">
     <div class="col"></div>
     <div class="col-10" style="background-color: #fff;padding: 20px;">
-        <h3 class="page-title">测试标题</h3>
+        <h3 class="page-title">{{ forum_detailed[0].title }}</h3>
         <p class="question-info">
-            <span>xiaodian-</span>
-            <span>时间: 2024-4-21</span>
+            <span>{{ forum_detailed[0].publisher_name }} -</span>
+            <span>{{ forum_detailed[0].publish_date.strftime('%Y-%m-%d') }}</span>
         </p>
         <hr>
-        <p class="question-content text-center">测试详细内容</p>
+        <p class="question-content text-center">{{ forum_detailed[0].content }}</p>
         <hr>
-        <h5 class="comment-group-title">评论 (3)：</h5>
+        <h5 class="comment-group-title">评论 ({{ forum_detailed[0].title }})：</h5>
         <form action="" method="post">
             <div class="form-group">
                 <input type="text" placeholder="请填写评论" name="content" class="form-control">
@@ -36,11 +36,11 @@ type="image/x-icon"{% endblock %}
         <ul class="comment-group">
             <li>
                 <div class="user-info">
-                    <img class="avatar" src="" alt="头像">
+                    <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK16UmABGddL94OZXwjHSudU3WwTnbQNjQoQ&s" alt="头像">
                     <span class="username">xiaodian</span>
                     <span class="create-time">2024-4-21</span>
                 </div>
-                <p class="comment-content"></p>
+                <p class="comment-content">666啊</p>
             </li>
         </ul>
     </div>
