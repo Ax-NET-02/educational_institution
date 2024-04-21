@@ -11,52 +11,33 @@ type="image/x-icon"{% endblock %}
 
 {% block body %}
     <main style="background-color: rgba(250, 250, 250)">
-        <div class="row" style="margin-top: 100px;">
+        <div class="row" style="margin-top: 2%;">
             <div class="col"></div>
             <div class="col-8">
+                {% for forum_datas in forum_data %}
                 <ul class="question-ul">
+                    <div style="margin-top: 4%;">
                         <li>
                             <div class="side-question">
-                                <img class="side-question-avatar" src="{{ url_for('static', filename='images/avatar/1.jpg') }}" alt="头像">
+                                <img class="side-question-avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK16UmABGddL94OZXwjHSudU3WwTnbQNjQoQ&s" alt="头像">
                             </div>
                             <div class="question-main">
-                                <div class="question-title"><a href="" class="fs-4">这道English不会</a></div>
+                                <div class="question-title"><a href="" class="fs-4">{{ forum_datas.title }}</a></div>
                                 <div class="question-content">
-                                    <p class="fw-bold">都8月28号了，什么时候开学啊...</p>
+                                    <p class="fw-bold">{{ forum_datas.content }}</p>
                                 </div>
                                 <div class="question-detail">
-                                    <span class="question-author">名字</span>
-                                    <span class="question-time">2024-4-10</span>
+                                    <span class="question-author">{{ forum_datas.publisher_name }}</span>
+                                    <span class="question-time">{{ forum_datas.publish_date.strftime('%Y-%m-%d') }}</span>
                                 </div>
                             </div>
                         </li>
-                </ul>
+                    </div>
+            </ul>
+            {% endfor %}
             </div>
             <div class="col"></div>
         </div>
-
-        <div class="row" style="margin-top: 100px;">
-            <div class="col"></div>
-            <div class="col-8">
-                <ul class="question-ul">
-                        <li>
-                            <div class="side-question">
-                                <img class="side-question-avatar" src="{{ url_for('static', filename='images/avatar/2.jpeg') }}" alt="头像">
-                            </div>
-                            <div class="question-main">
-                                <div class="question-title"><a href="" class="fs-4">标题</a></div>
-                                <div class="question-content">
-                                    <p class="fw-bold">爆ぜろリアル！弾けろシナプス！ パニッシュメント ディス、ワールド！</p>
-                                </div>
-                                <div class="question-detail">
-                                    <span class="question-author">小岛游六花</span>
-                                    <span class="question-time">2024-4-10</span>
-                                </div>
-                            </div>
-                        </li>
-                </ul>
-            </div>
-            <div class="col"></div>
         </div>
     </main>
 {% endblock %}

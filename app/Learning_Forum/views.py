@@ -9,4 +9,18 @@ LearningForum = Blueprint('LearningForum', __name__)
 
 @LearningForum.route('/Learning_Forum')
 def forum():
-    return render_template('Learning_Forum.html')
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    sql = """
+        SELECT
+            questions.*
+        FROM
+            questions
+    """
+    cursor.execute(sql)
+    forum_data = cursor.fetchall()
+    print(forum_data)
+    return render_template('Learning_Forum.html', forum_data=forum_data)
+
+@LearningForum.route('/forum_detailed')
+def forum_detailed():
+    return render_template('forum_detailed.html')

@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
+type="image/x-icon"{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/detail.css') }}">
+{% endblock %}
+
+{% block body %}
+    
+<div class="row" style="margin-top: 101px;">
+    <div class="col"></div>
+    <div class="col-10" style="background-color: #fff;padding: 20px;">
+        <h3 class="page-title">测试标题</h3>
+        <p class="question-info">
+            <span>xiaodian-</span>
+            <span>时间: 2024-4-21</span>
+        </p>
+        <hr>
+        <p class="question-content text-center">测试详细内容</p>
+        <hr>
+        <h5 class="comment-group-title">评论 (3)：</h5>
+        <form action="" method="post">
+            <div class="form-group">
+                <input type="text" placeholder="请填写评论" name="content" class="form-control">
+                <input type="hidden" name="question_id" value="">
+            </div>
+            <div class="form-group" style="text-align: right; margin-top: 2%;">
+                <button class="btn btn-primary">评论</button>
+            </div>
+        </form>
+        <hr>
+        <ul class="comment-group">
+            <li>
+                <div class="user-info">
+                    <img class="avatar" src="" alt="头像">
+                    <span class="username">xiaodian</span>
+                    <span class="create-time">2024-4-21</span>
+                </div>
+                <p class="comment-content"></p>
+            </li>
+        </ul>
+    </div>
+    <div class="col"></div>
+</div>
+{% endblock %}
