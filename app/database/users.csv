@@ -1,3 +1,4 @@
-user_id,user_name,user_mail,user_number,user_password,permission_id
-1,Hirasawa_Yui,23457128@qq.com,13219511051,40925495824cc.,3
-2,Meow_star,3485723494@qq.com,19260092124,194759485mm.,3
+user_id,user_name,user_mail,user_number,user_password,permission_id,user_img
+1,Hirasawa_Yui,23457128@qq.com,13219511051,40925495824cc.,3,https://www.wudada.online/dmtx/027f3e4543ac1e6343daeac58f75ddc8.webp
+2,Meow_star,3485723494@qq.com,19260092101,194759485mm.,3,https://www.wudada.online/dmtx/d81a11c650a54b16c1cc6df017487f65.webp
+3,Ax-NET,2484601608@educational.com,19160092124,2005220zn.,3,https://www.wudada.online/dmtx/5b3ab78748c1674abe33e833c91bd4d4.webp

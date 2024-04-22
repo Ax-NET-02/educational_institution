@@ -23,10 +23,10 @@ type="image/x-icon"{% endblock %}
         <p class="question-content text-center">{{ forum_detailed[0].content }}</p>
         <hr>
         <h5 class="comment-group-title">评论 ({{ forum_detailed[0].title }})：</h5>
-        <form action="" method="post">
+        <form action="{{ url_for('LearningForum.comment_data') }}" method="post">
             <div class="form-group">
-                <input type="text" placeholder="请填写评论" name="content" class="form-control">
-                <input type="hidden" name="question_id" value="">
+                <input type="text" placeholder="请填写评论" name="comment_content" class="form-control">
+                <input type="text" style="display: none;" name="question_id" value="{{ forum_detailed[0].question_id }}">
             </div>
             <div class="form-group" style="text-align: right; margin-top: 2%;">
                 <button class="btn btn-primary">评论</button>
@@ -34,14 +34,16 @@ type="image/x-icon"{% endblock %}
         </form>
         <hr>
         <ul class="comment-group">
+            {% for comment_datas in comment_data %}
             <li>
                 <div class="user-info">
-                    <img class="avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK16UmABGddL94OZXwjHSudU3WwTnbQNjQoQ&s" alt="头像">
-                    <span class="username">xiaodian</span>
-                    <span class="create-time">2024-4-21</span>
+                    <img class="avatar" src="{{ comment_datas.user_img }}" alt="头像">
+                    <span class="username">{{ comment_datas.commenter_name }}</span>
+                    <span class="create-time">{{ comment_datas.publish_date.strftime('%Y-%m-%d') }}</span>
                 </div>
-                <p class="comment-content">666啊</p>
-            </li>
+                <p class="comment-content">{{ comment_datas.comment_content }}</p>
+            </li>  
+            {% endfor %}
         </ul>
     </div>
     <div class="col"></div>

@@ -33,7 +33,6 @@ from app.Manage_users.views import Manage_users
 from app.Manage_course.views import Manages_course
 from app.Dashboard.views import Dashboard
 
-
 # 蓝图注册
 app.register_blueprint(home)
 app.register_blueprint(login)

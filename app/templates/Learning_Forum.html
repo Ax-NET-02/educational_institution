@@ -19,12 +19,12 @@ type="image/x-icon"{% endblock %}
                     <div style="margin-top: 4%;">
                         <li>
                             <div class="side-question">
-                                <img class="side-question-avatar" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK16UmABGddL94OZXwjHSudU3WwTnbQNjQoQ&s" alt="头像">
+                                <img class="side-question-avatar" src="{{ forum_datas.user_img }}" alt="{{ forum_datas.publisher_name }}">
                             </div>
                             <div class="question-main">
                                 <div class="question-title"><a href="/forum_detailed?question_id={{ forum_datas.question_id }}" class="fs-4">{{ forum_datas.title }}</a></div>
                                 <div class="question-content">
-                                    <p class="fw-bold">{{ forum_datas.content }}</p>
+                                    <p class="fw-bold">{{ forum_datas.content[:50] }}......</p>
                                 </div>
                                 <div class="question-detail">
                                     <span class="question-author">{{ forum_datas.publisher_name }}</span>

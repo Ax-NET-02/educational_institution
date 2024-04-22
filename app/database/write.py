@@ -7,6 +7,7 @@ import connect
 import mysql.connector
 import datetime
 import numpy as np
+from API.get_img_api import get_img
 
 
 def getCursor():
@@ -27,23 +28,25 @@ def insert(sql, parameters):
 admin = pandas.read_csv('admin.csv')
 for index, row in admin.iterrows():
     sql = """
-        INSERT INTO admin (admin_id, admin_name, admin_mail, admin_password, permission_id)
+        INSERT INTO admin (admin_id, admin_name, admin_mail, admin_password, permission_id, admin_img)
         VALUES
-        (%s, %s, %s, %s, %s)
+        (%s, %s, %s, %s, %s, %s)
     """
     hashed_pw = bcrypt.hashpw(row['admin_password'].encode('utf-8'), bcrypt.gensalt())
-    parameters = (row['admin_id'], row['admin_name'], row['admin_mail'], hashed_pw, row['permission_id'])
+    admin_img = get_img()
+    parameters = (row['admin_id'], row['admin_name'], row['admin_mail'], hashed_pw, row['permission_id'], admin_img)
     insert(sql, parameters)
     
 customer_service = pandas.read_csv('customer_service.csv')
 for index, row in customer_service.iterrows():
     sql = """
-        INSERT INTO customer_service (service_id, service_name, service_password, service_email, service_number, permission_id)
+        INSERT INTO customer_service (service_id, service_name, service_password, service_email, service_number, permission_id, service_img)
         VALUES
-        (%s, %s, %s, %s, %s, %s)
+        (%s, %s, %s, %s, %s, %s, %s)
     """
     hashed_pw = bcrypt.hashpw(row['service_password'].encode('utf-8'), bcrypt.gensalt())
-    parameters = (row['service_id'], row['service_name'], hashed_pw, row['service_email'], row['service_number'], row['permission_id'])
+    service_img = get_img()
+    parameters = (row['service_id'], row['service_name'], hashed_pw, row['service_email'], row['service_number'], row['permission_id'], service_img)
     insert(sql, parameters)
     
 
@@ -61,12 +64,13 @@ for index, row in permissions.iterrows():
 users = pandas.read_csv('users.csv')
 for index, row in users.iterrows():
     sql = """
-        INSERT INTO users (user_id, user_name, user_mail, user_number,user_password, permission_id)
+        INSERT INTO users (user_id, user_name, user_mail, user_number,user_password, permission_id, user_img)
         VALUES
-        (%s, %s, %s, %s, %s, %s)
+        (%s, %s, %s, %s, %s, %s, %s)
     """
     hashed_pw = bcrypt.hashpw(row['user_password'].encode('utf-8'), bcrypt.gensalt())
-    parameters = (row['user_id'], row['user_name'], row['user_mail'], row['user_number'],hashed_pw, row['permission_id'])
+    user_img = get_img()
+    parameters = (row['user_id'], row['user_name'], row['user_mail'], row['user_number'],hashed_pw, row['permission_id'], user_img)
     insert(sql, parameters)
     
     

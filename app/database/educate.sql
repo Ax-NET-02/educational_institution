@@ -86,7 +86,8 @@ CREATE TABLE IF NOT EXISTS comments (
     comment_content TEXT NOT NULL,
     commenter_name VARCHAR(50) NOT NULL,
     question_id INT NOT NULL,
-    FOREIGN KEY (question_id) REFERENCES questions(question_id)
+    user_id INT NOT NULL,
+    comment_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
 

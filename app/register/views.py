@@ -6,7 +6,8 @@ from pytz import timezone
 import MySQLdb.cursors
 import re
 import bcrypt
-
+import json
+import requests
 
 register = Blueprint('register', __name__)
 
@@ -60,9 +61,13 @@ def register_data():
                         flash("Password not strong enough.Avoid consecutive characters and easily guessed words.","warning")
                         return render_template('register.html')
                     else:
+                        url = 'https://www.wudada.online/Api/SjTx'
+                        response = requests.get(url)
+                        res = json.loads(response.text)
+                        user_img = res['data']
                         hashed_password = bcrypt.hashpw(password.encode('utf-8'), bcrypt.gensalt())
-                        cursor.execute('INSERT INTO users (user_name, user_mail, user_number, user_password, permission_id) VALUES (%s, %s, %s, %s, %s)',
-                                        (user_name, email, telephone_number, hashed_password, permission_id, ))
+                        cursor.execute('INSERT INTO users (user_name, user_mail, user_number, user_password, permission_id, user_img) VALUES (%s, %s, %s, %s, %s, %s)',
+                                        (user_name, email, telephone_number, hashed_password, permission_id, user_img))
                         mysql.connection.commit()
                         flash("You have successfully registered!", "success")
                         return redirect(url_for('login.rendering_login'))

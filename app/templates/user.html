@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Admin{% endblock %}
+{% block title %}User{% endblock %}
 
 {% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
 type="image/x-icon"{% endblock %}
@@ -16,7 +16,7 @@ type="image/x-icon"{% endblock %}
       <article class="postcard dark blue">
     
               <div class="postcard__text">
-                  <h1 class="postcard__title blue">Welcome Back {{session['admin_name']}}!</h1>
+                  <h1 class="postcard__title blue">Welcome Back {{session['user_name']}}!</h1>
                   <div class="postcard__subtitle small">
                       <time datetime="2024-04-22 12:00:00">
                           <i class="fas fa-calendar-alt mr-2"></i>

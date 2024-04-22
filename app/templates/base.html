@@ -47,7 +47,7 @@
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQK16UmABGddL94OZXwjHSudU3WwTnbQNjQoQ&s" alt="{{ session['admin_name'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="{{ session['admin_img'] }}" alt="{{ session['admin_name'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ url_for('Manage_users.manage_users') }}">Manage_users</a></li>
@@ -64,7 +64,7 @@
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="https://www.wudada.online/dmtx/f55455b6610077bd421ffb9b988dea8e.webp" alt="{{ session['service'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="{{ session['service_img'] }}" alt="{{ session['service'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ url_for('Manage_users.manage_users') }}">Manage_users</a></li>
@@ -81,11 +81,11 @@
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="https://www.wudada.online//dmtx//ffd848cadd153618b2003483496bfb5a.webp" alt="{{ session['user'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="{{ session['user_img'] }}" alt="{{ session['user'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ url_for('Course_order.course_order') }}">My_course</a></li>
-              <li><a class="dropdown-item" href="#">My_community</a></li>
+              <li><a class="dropdown-item" href="{{ url_for('LearningForum.manage_forum') }}">My_community</a></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="/user_dashboard">Welcome {{ session['user_name'] }}!</a></li>
             </ul>
