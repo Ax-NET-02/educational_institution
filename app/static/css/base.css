@@ -4,6 +4,11 @@ main {
   /* 禁止水平滚动 */
 }
 
+body {
+  overflow-x: hidden;
+}
+
+
 .line {
   border-top: 2px solid rgb(102, 102, 102);
   /* 修改颜色 */

@@ -22,14 +22,15 @@ type="image/x-icon"{% endblock %}
         <hr>
         <p class="question-content text-center">{{ forum_detailed[0].content }}</p>
         <hr>
-        <h5 class="comment-group-title">评论 ({{ forum_detailed[0].title }})：</h5>
+        <h5 class="comment-group-title">Comment ({{ quantity_data[0].quantity }})：</h5>
         <form action="{{ url_for('LearningForum.comment_data') }}" method="post">
             <div class="form-group">
-                <input type="text" placeholder="请填写评论" name="comment_content" class="form-control">
+                <input type="text" placeholder="Please fill in the comments" name="comment_content" class="form-control">
                 <input type="text" style="display: none;" name="question_id" value="{{ forum_detailed[0].question_id }}">
             </div>
             <div class="form-group" style="text-align: right; margin-top: 2%;">
-                <button class="btn btn-primary">评论</button>
+                <a href="{{ url_for('LearningForum.forum') }}" role="button" class="btn btn-warning">Back</a>
+                <button class="btn btn-primary">Comment</button>
             </div>
         </form>
         <hr>

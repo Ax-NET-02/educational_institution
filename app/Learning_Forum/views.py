@@ -23,7 +23,6 @@ def forum():
     """
     cursor.execute(sql)
     forum_data = cursor.fetchall()
-    print(forum_data)
     return render_template('Learning_Forum.html', forum_data=forum_data)
 
 @LearningForum.route('/forum_detailed')
@@ -63,14 +62,25 @@ def forum_detailed():
         WHERE
             comments.question_id = %s;
     """
+    
+    quantity_sql = """
+        SELECT
+            COUNT(question_id) AS quantity
+        FROM
+            comments
+        WHERE
+            comments.question_id = %s
+    """
+    
     cursor.execute(sql, question_id)
     forum_detailed = cursor.fetchall()
     
     cursor.execute(comments_sql, question_id)
     comment_data = cursor.fetchall()
-    print(forum_detailed)
-    print(comment_data)
-    return render_template('forum_detailed.html', forum_detailed=forum_detailed, comment_data=comment_data)
+    
+    cursor.execute(quantity_sql, question_id)
+    quantity_data = cursor.fetchall()
+    return render_template('forum_detailed.html', forum_detailed=forum_detailed, comment_data=comment_data, quantity_data=quantity_data)
 
 @LearningForum.route('/comment_data', methods = ['POST'])
 def comment_data():
@@ -120,12 +130,24 @@ def comment_data():
         WHERE
             comments.question_id = %s;
     """
+    quantity_sql = """
+        SELECT
+            COUNT(question_id) AS quantity
+        FROM
+            comments
+        WHERE
+            comments.question_id = %s
+    """
+    
     cursor.execute(sql, question_id)
     forum_detailed = cursor.fetchall()
     
     cursor.execute(comments_sql, question_id)
     comment_data = cursor.fetchall()
-    return render_template('forum_detailed.html', forum_detailed=forum_detailed, comment_data=comment_data)
+    
+    cursor.execute(quantity_sql, question_id)
+    quantity_data = cursor.fetchall()
+    return render_template('forum_detailed.html', forum_detailed=forum_detailed, comment_data=comment_data, quantity_data=quantity_data)
 
 @LearningForum.route('/manage_forum')
 def manage_forum():
@@ -156,3 +178,34 @@ def delete_forum():
         mysql.connection.commit()
         flash(f"question - {question_id} is now deleted", "success")
         return redirect(url_for('LearningForum.manage_forum'))
+    
+@LearningForum.route('/delete_comment')
+def delete_comment():
+        comment_id = request.args.get("comment_id")
+        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+        # delete the account in account table, automatically delete staff with that accountid
+        cursor.execute("DELETE comments FROM comments WHERE comment_id = %s;", (comment_id,))
+        mysql.connection.commit()
+        flash(f"comment - {comment_id} is now deleted", "success")
+        return redirect(url_for('LearningForum.manage_comment'))
+    
+@LearningForum.route('/manage_comment')
+def manage_comment():
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    question_id = request.args.get("question_id")
+
+    comment_sql = """
+        SELECT
+            comments.comment_id,
+            comments.comment_content,
+            comments.commenter_name,
+            comments.comment_date 
+        FROM
+            comments 
+        WHERE
+            comments.question_id = %s
+    """
+    cursor.execute(comment_sql, (question_id, ))
+    comment = cursor.fetchall()
+    return render_template('comment.html', comment_data=comment)
+    
