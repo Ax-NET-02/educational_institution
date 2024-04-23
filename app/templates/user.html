@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}User{% endblock %}
+{% block title %}User-{{session['user_name']}}{% endblock %}
 
-{% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
+{% block link %}rel="shortcut icon" href="{{session['user_img']}}"
 type="image/x-icon"{% endblock %}
 
 {% block head %}
@@ -43,7 +43,7 @@ type="image/x-icon"{% endblock %}
                   <ul class="postcard__tagbox">
                       <li class="tag__item h5"><a href="{{ url_for('Course_order.course_order') }}">My course</a></li>
                       <li class="tag__item h5"><a href="{{ url_for('LearningForum.manage_forum') }}" class="fas fa-tag mr-2">My community</a></li>
-                      <li class="tag__item h5"><a href="">Dash board</a></li>
+                      <li class="tag__item h5"><a href="/user_dashboard">Dash board</a></li>
                   </ul>
               </div>
       </div>

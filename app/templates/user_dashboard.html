@@ -31,52 +31,6 @@ type="image/x-icon"{% endblock %}
                         <li><i class="bi bi-telephone"></i> <strong>Phone: </strong><span id="phone">{{ session['user_phone'] }}</span>
                         </li>
                     </ul>
-                    <div class="container d-flex justify-content-between">
-                        <a href="#" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</a>
-                        <button type="submit" class="btn btn-danger"><a href=""
-                                class="text-decoration-none text-white">Edit</a></button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <form action="" method="POST" name="changpw" id="changpw">
-                                <div class="mb-3">
-                                    <label for="oldPassword" class="form-label">Old Password</label>
-                                    <input type="password" class="form-control" id="oldPassword" name="oldPassword"
-                                        required onfocusout="validateOldPw()">
-                                    <div id="oldPasswordError" class="text-danger"></div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="newPassword" class="form-label">New Password</label>
-                                    <input type="password" class="form-control" id="newPassword" name="newPassword"
-                                        required pattern="(?=.*\d)(?=.*[a-z]).{8,}"
-                                        title="Must contain at least one number and one uppercase and lowercase letter,and at least 8 characters">
-                                    <div id="newPasswordError" class="text-danger"></div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
-                                    <input type="password" class="form-control" id="confirmPassword"
-                                        name="confirmPassword" required onfocusout="validateNewMatch()">
-                                    <div id="confirmPasswordError" class="text-danger"></div>
-                                </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                                onclick="clearForm()">Close</button>
-                            <button type="submit" class="btn btn-dark" onclick="" id="myBtn" name="myBtn">Save
-                                Changes</button>
-                        </div>
-                    </div>
-                    </form>
                 </div>
             </div>
         </div>

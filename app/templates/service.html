@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Service-{{session['service_name']}}{% endblock %}
+
+{% block link %}rel="shortcut icon" href="{{session['service_img']}}"
+type="image/x-icon"{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course.css') }}">
+{% endblock %}
+
+{% block body %}
+<main>
+    <section>
+        <div class="container py-4">
+      <article class="postcard dark blue">
+    
+              <div class="postcard__text">
+                  <h1 class="postcard__title blue">Welcome Back {{session['service_name']}}!</h1>
+                  <div class="postcard__subtitle small">
+                      <time datetime="2024-04-22 12:00:00">
+                          <i class="fas fa-calendar-alt mr-2"></i>
+              <div id="current_date">
+                <script>
+                    const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+                    const monthNames = ["Jan", "Feb", "Mar", "Apr",
+                            "May", "Jun", "Jul", "Aug",
+                            "Sep", "Oct", "Nov", "Dec"];
+                    const date = new Date();
+                    const dayName = daysOfWeek[date.getDay()];
+                    const day = date.getDate();
+                    const monthIndex = date.getMonth();
+                    const monthName = monthNames[monthIndex];
+                    const year = date.getFullYear();
+                    document.getElementById("current_date").innerHTML = `${dayName}, ${day} ${monthName} ${year}`;
+                </script>
+    
+            </div>
+                      </time>
+                  </div>
+                  <div class="postcard__bar"></div>
+                  <div class="postcard__preview-txt">Welcome Back &#128522; Are you looking for the following functions?</div>
+                  <ul class="postcard__tagbox">
+                      <li class="tag__item h5"><a href="/course"><i class="fas fa-tag mr-2"></i>Course</a></li>
+                      <li class="tag__item h5"><a href="/Learning_Forum" class="fas fa-tag mr-2">Forum</a></li>
+                      <li class="tag__item h5"><a href="/service_dashboard">Dash board</a></li>
+                      <li class="tag__item play blue h5">
+                          <a href="/Manages_course"><i class="fas fa-play mr-2"></i>Manage Course</a>
+                      </li>
+                  </ul>
+              </div>
+      </div>
+          </article>
+    </section>
+</main>
+{% endblock %}

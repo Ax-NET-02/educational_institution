@@ -26,7 +26,7 @@ from app.course.views import course
 from app.order.views import order
 from app.Course_order.views import Course_order
 from app.Learning_Forum.views import LearningForum
-from app.Forum_details.views import Forumdetails
+from app.Manage_forum.views import Manage_forum
 from app.public_question.views import Publicquestion
 from app.logout.views import logout
 from app.Manage_users.views import Manage_users
@@ -42,7 +42,7 @@ app.register_blueprint(course)
 app.register_blueprint(order)
 app.register_blueprint(Course_order)
 app.register_blueprint(LearningForum)
-app.register_blueprint(Forumdetails)
+app.register_blueprint(Manage_forum)
 app.register_blueprint(Publicquestion)
 app.register_blueprint(logout)
 app.register_blueprint(Manage_users)

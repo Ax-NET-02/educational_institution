@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Manage_users{% endblock %}
+{% block title %}admin_service_comment{% endblock %}
 
 {% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
 type="image/x-icon"{% endblock %}
@@ -10,25 +10,21 @@ type="image/x-icon"{% endblock %}
 {% endblock %}
 
 {% block body %}
+<main>
     <div class="container d-flex justify-content-end mt-5"
         style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
-        <h1>User Management</h1>
+        <h1>Comment Details</h1>
     </div>
     <!----Search and add movie---->
     <div class="container d-flex">
         <div class="input-group mb-3">
             <label for="allMovies"></label>
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for user (User Name, Email, Phone)"
-                class="form-control border-secondary">
-            <div>
-                <button type="submit" class="btn btn-secondary"><i class="bi bi-search"></i></button>
+            <input type="text" id="myInput" onkeyup="myFunction()"
+                placeholder="Search for user (Title, Content, Publisher_Name)" class="form-control border-secondary">
+            <div style="margin-left: 5px;">
+                <a class="btn btn-outline-warning" href="{{ url_for('Manage_forum.admin_service_forum') }}" role="button">Back</a>
                 <button type="submit" class="btn btn-dark"><a href="#" class="text-decoration-none text-white"
                         style="font-size: 13px;" onclick="ClearFields();">Cancel</a></button>
-                {% if session['permission_name'] in ['admin', 'service']%}
-                <a href="{{ url_for('Manage_users.add_users') }}" role="button" style="font-size:13px;" class="btn btn-outline-dark mx-2">
-                    <i class="bi bi-pencil-square"></i>Add User
-                </a>
-                {% endif %}
             </div>
 
         </div>
@@ -41,34 +37,27 @@ type="image/x-icon"{% endblock %}
                 <table class="table align-middle table-bordered" id="myTable">
                     <!-- tablr headers -->
                     <thead class="table-dark text-light">
-                        <th>User ID</th>
-                        <th>User Name</th>
-                        <th>Email address</th>
-                        <th>Phone</th>
-                        {% if session['permission_name'] in ['admin', 'service'] %}
-                        <th>Edit</th>
+                        <th>Comment ID</th>
+                        <th>Comment by</th>
+                        <th>Comments</th>
+                        <th>Comment time</th>
                         <th>Delete</th>
-                        {% endif %}
                     </thead>
 
                     <tbody>
-                        {% for user_datas in user_data %}
+                        {% for admin_service_comments in admin_service_comment %}
                         <tr>
-                            <td class="col-md-2" style="font-size: 13px;">{{ user_datas.id }}</td>
-                            <td class="col-md-2" style="font-size: 13px;">{{ user_datas.name }}</td>
-                            <td class="col-md-2" style="font-size: 13px;">{{ user_datas.mail }}</td>
-                            <td class="col-md-2" style="font-size: 13px;">{{ user_datas.phone }}</td>
-                            {% if session['permission_name'] in ['admin', 'service'] %}
-                            <td><a type="submit" class="btn btn-danger mt-2" style="font-size: 10px;" role="button"
-                                    href="/Edit_users?user_id={{ user_datas.id }}"><i
-                                        class="bi bi-pencil-square"></i> Edit</a></td>
-                            <td>
+                            <td class="col-md-4" style="font-size: 13px;">{{ admin_service_comments.comment_id }}</td>
+                            <td class="col-md-4" style="font-size: 13px;">{{ admin_service_comments.commenter_name }}</td>
+                            <td class="col-md-4" style="font-size: 13px;">{{ admin_service_comments.comment_content }}</td>
+                            <td class="col-md-4" style="font-size: 13px;">{{ admin_service_comments.comment_date.strftime('%Y-%m-%d') }}</td>
+                            <td class="col-md-4">
                                 <!---Delete--->
                                 <button type="button" class="btn btn-warning mt-2" style="font-size: 10px;"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#exampleStaff{{ user_datas.id }}">Delete</button>
-                                <div class="modal fade" id="exampleStaff{{ user_datas.id }}"
-                                    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    data-bs-target="#exampleStaff{{ admin_service_comments.comment_id }}">Delete</button>
+                                <div class="modal fade" id="exampleStaff{{ admin_service_comments.comment_id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -78,22 +67,21 @@ type="image/x-icon"{% endblock %}
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Are you sure you want to delete user <span style="color: blue;">
-                                                    userid-{{ user_datas.id }} {{ user_datas.name }}?</span>
+                                                <p>Are you sure you want to delete comment <span style="color: blue;">
+                                                    comment_id-{{ admin_service_comments.comment_id }}?</span>
                                                 </p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
                                                 <a type="button" class="btn btn-warning"
-                                                    href="/Delete_users?user_id={{ user_datas.id }}"
-                                                    id="exampleStaff{{ user_datas.id }}">Delete</a>
+                                                    href="/admin_service_delete_comment?comment_id={{ admin_service_comments.comment_id }}"
+                                                    id="exampleStaff{{ admin_service_comments.comment_id }}">Delete</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -101,4 +89,5 @@ type="image/x-icon"{% endblock %}
             </div>
         </div>
     </div>
+</main>
 {% endblock %}

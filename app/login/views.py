@@ -46,6 +46,7 @@ def login_data():
                     session['permission_name'] = admin_accounts['permission_name']
                     session['admin_name'] = admin_accounts['admin_name']
                     session['admin_img'] = admin_accounts['admin_img']
+                    session['admin_mail'] = admin_accounts['admin_mail']
                     flash(f"Login successful, welcome-{admin_accounts['admin_name']}", "success")
                     return redirect(url_for('home.index'))                    
                 else:

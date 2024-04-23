@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Manage_users{% endblock %}
+{% block title %}Manage_forum{% endblock %}
 
 {% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
 type="image/x-icon"{% endblock %}
@@ -10,25 +10,21 @@ type="image/x-icon"{% endblock %}
 {% endblock %}
 
 {% block body %}
+<main>
     <div class="container d-flex justify-content-end mt-5"
         style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">
-        <h1>User Management</h1>
+        <h1>Forum Management</h1>
     </div>
     <!----Search and add movie---->
     <div class="container d-flex">
         <div class="input-group mb-3">
             <label for="allMovies"></label>
-            <input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for user (User Name, Email, Phone)"
-                class="form-control border-secondary">
+            <input type="text" id="myInput" onkeyup="myFunction()"
+                placeholder="Search for user (Title, Content, Publisher_Name)" class="form-control border-secondary">
             <div>
                 <button type="submit" class="btn btn-secondary"><i class="bi bi-search"></i></button>
                 <button type="submit" class="btn btn-dark"><a href="#" class="text-decoration-none text-white"
                         style="font-size: 13px;" onclick="ClearFields();">Cancel</a></button>
-                {% if session['permission_name'] in ['admin', 'service']%}
-                <a href="{{ url_for('Manage_users.add_users') }}" role="button" style="font-size:13px;" class="btn btn-outline-dark mx-2">
-                    <i class="bi bi-pencil-square"></i>Add User
-                </a>
-                {% endif %}
             </div>
 
         </div>
@@ -41,34 +37,33 @@ type="image/x-icon"{% endblock %}
                 <table class="table align-middle table-bordered" id="myTable">
                     <!-- tablr headers -->
                     <thead class="table-dark text-light">
-                        <th>User ID</th>
-                        <th>User Name</th>
-                        <th>Email address</th>
-                        <th>Phone</th>
-                        {% if session['permission_name'] in ['admin', 'service'] %}
-                        <th>Edit</th>
+                        <th>Question ID</th>
+                        <th>Title</th>
+                        <th>Content</th>
+                        <th>Publisher Name</th>
+                        <th>Publish Date</th>
+                        <th>Comment</th>
                         <th>Delete</th>
-                        {% endif %}
                     </thead>
 
                     <tbody>
-                        {% for user_datas in user_data %}
+                        {% for manage_forums in manage_forum %}
                         <tr>
-                            <td class="col-md-2" style="font-size: 13px;">{{ user_datas.id }}</td>
-                            <td class="col-md-2" style="font-size: 13px;">{{ user_datas.name }}</td>
-                            <td class="col-md-2" style="font-size: 13px;">{{ user_datas.mail }}</td>
-                            <td class="col-md-2" style="font-size: 13px;">{{ user_datas.phone }}</td>
-                            {% if session['permission_name'] in ['admin', 'service'] %}
-                            <td><a type="submit" class="btn btn-danger mt-2" style="font-size: 10px;" role="button"
-                                    href="/Edit_users?user_id={{ user_datas.id }}"><i
-                                        class="bi bi-pencil-square"></i> Edit</a></td>
+                            <td class="col-md-2" style="font-size: 13px;">{{ manage_forums.question_id }}</td>
+                            <td class="col-md-2" style="font-size: 13px;">{{ manage_forums.title }}</td>
+                            <td class="col-md-2" style="font-size: 13px;">{{ manage_forums.content }}</td>
+                            <td class="col-md-2" style="font-size: 13px;">{{ manage_forums.publisher_name }}</td>
+                            <td class="col-md-2" style="font-size: 13px;">{{ manage_forums.publish_date.strftime('%Y-%m-%d') }}</td>
+                            <td class="col-md-2" style="font-size: 13px;">
+                            <a class="btn btn-outline-info" href="/admin_service_comment?question_id={{ manage_forums.question_id }}" role="button">View details</a>
+                            </td>
                             <td>
                                 <!---Delete--->
                                 <button type="button" class="btn btn-warning mt-2" style="font-size: 10px;"
                                     data-bs-toggle="modal"
-                                    data-bs-target="#exampleStaff{{ user_datas.id }}">Delete</button>
-                                <div class="modal fade" id="exampleStaff{{ user_datas.id }}"
-                                    tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    data-bs-target="#exampleStaff{{ manage_forums.question_id }}">Delete</button>
+                                <div class="modal fade" id="exampleStaff{{ manage_forums.question_id }}" tabindex="-1"
+                                    aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog modal-dialog-centered">
                                         <div class="modal-content">
                                             <div class="modal-header">
@@ -78,22 +73,21 @@ type="image/x-icon"{% endblock %}
                                                     aria-label="Close"></button>
                                             </div>
                                             <div class="modal-body">
-                                                <p>Are you sure you want to delete user <span style="color: blue;">
-                                                    userid-{{ user_datas.id }} {{ user_datas.name }}?</span>
+                                                <p>Are you sure you want to delete forum <span style="color: blue;">
+                                                    forum_id-{{ manage_forums.question_id }} {{ manage_forums.title }}?</span>
                                                 </p>
                                             </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-secondary"
                                                     data-bs-dismiss="modal">Close</button>
                                                 <a type="button" class="btn btn-warning"
-                                                    href="/Delete_users?user_id={{ user_datas.id }}"
-                                                    id="exampleStaff{{ user_datas.id }}">Delete</a>
+                                                    href="/admin_service_delete_forum?question_id={{ manage_forums.question_id }}"
+                                                    id="exampleStaff{{ manage_forums.question_id }}">Delete</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </td>
-                            {% endif %}
                         </tr>
                         {% endfor %}
                     </tbody>
@@ -101,4 +95,5 @@ type="image/x-icon"{% endblock %}
             </div>
         </div>
     </div>
+</main>
 {% endblock %}

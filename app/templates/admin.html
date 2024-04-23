@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Admin{% endblock %}
+{% block title %}Admin-{{session['admin_name']}}{% endblock %}
 
-{% block link %}rel="shortcut icon" href="{{ url_for('static', filename='images/icon/document.png') }}"
+{% block link %}rel="shortcut icon" href="{{session['admin_img']}}"
 type="image/x-icon"{% endblock %}
 
 {% block head %}
@@ -43,7 +43,7 @@ type="image/x-icon"{% endblock %}
                   <ul class="postcard__tagbox">
                       <li class="tag__item h5"><a href="/course"><i class="fas fa-tag mr-2"></i>Course</a></li>
                       <li class="tag__item h5"><a href="/Learning_Forum" class="fas fa-tag mr-2">Forum</a></li>
-                      <li class="tag__item h5"><a href="/course"><i class="fas fa-tag mr-2"></i>Modify personal homepage</a></li>
+                      <li class="tag__item h5"><a href="/admin_dashboard">Dash board</a></li>
                       <li class="tag__item play blue h5">
                           <a href="/Manages_course"><i class="fas fa-play mr-2"></i>Manage Course</a>
                       </li>
