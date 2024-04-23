@@ -47,14 +47,14 @@
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="{{ session['admin_img'] }}" alt="{{ session['admin_name'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="{{ session['admin_img'] }}" alt="{{ session['admin_name'] }}" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ url_for('Manage_users.manage_users') }}">Manage_users</a></li>
               <li><a class="dropdown-item" href="{{ url_for('Manages_course.manages_course') }}">Manage_course</a></li>
               <li><a class="dropdown-item" href="#">Manage_community</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/admin_dashboard">Welcome {{ session['admin_name'] }}!</a></li>
+              <li><a class="dropdown-item" href="/admin_panel">Welcome {{ session['admin_name'] }}!</a></li>
             </ul>
           </div>
           <div style="margin-left: 1%;">
@@ -64,14 +64,14 @@
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="{{ session['service_img'] }}" alt="{{ session['service'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="{{ session['service_img'] }}" alt="{{ session['service'] }}" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ url_for('Manage_users.manage_users') }}">Manage_users</a></li>
               <li><a class="dropdown-item" href="{{ url_for('Manages_course.manages_course') }}">Manage_course</a></li>
               <li><a class="dropdown-item" href="#">Manage_community</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/service_dashboard">Welcome {{ session['service_name'] }}!</a></li>
+              <li><a class="dropdown-item" href="/service_panel">Welcome {{ session['service_name'] }}!</a></li>
             </ul>
           </div>
           <div style="margin-left: 1%;">
@@ -81,13 +81,13 @@
           <div class="dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <!-- change new path -->
-              <img src="{{ session['user_img'] }}" alt="{{ session['user'] }}" class="profile-picture" style="border: 1px solid white;" width="50px">
+              <img src="{{ session['user_img'] }}" alt="{{ session['user'] }}" style="border: 1px solid white;" width="50px">
             </a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ url_for('Course_order.course_order') }}">My_course</a></li>
               <li><a class="dropdown-item" href="{{ url_for('LearningForum.manage_forum') }}">My_community</a></li>
               <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="/user_dashboard">Welcome {{ session['user_name'] }}!</a></li>
+              <li><a class="dropdown-item" href="/user_panel">Welcome {{ session['user_name'] }}!</a></li>
             </ul>
           </div>
           <div style="margin-left: 1%;">

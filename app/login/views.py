@@ -66,6 +66,7 @@ def login_data():
                     service.service_email, 
                     service.service_password,
                     service.service_img, 
+                    service.service_number,
                     permissions.permission_name,
                     permissions.permission_id
                 FROM
@@ -85,6 +86,7 @@ def login_data():
                     session['permission_name'] = service_accounts['permission_name'] 
                     session['service_email'] = service_accounts['service_email']
                     session['service_img'] = service_accounts['service_img']
+                    session['service_phone'] = service_accounts['service_number']
                     flash(f"Login successful, welcome-{service_accounts['service_name']}", "success")
                     return redirect(url_for('home.index'))                    
                 else:
@@ -104,6 +106,7 @@ def login_data():
                     users.user_mail, 
                     users.user_password, 
                     users.user_img,
+                    users.user_number,
                     permissions.permission_name, 
                     permissions.permission_id
                 FROM
@@ -125,6 +128,7 @@ def login_data():
                     session['permission_name'] = user_accounts['permission_name'] 
                     session['user_mail'] = user_accounts['user_mail']
                     session['user_img'] = user_accounts['user_img']
+                    session['user_phone'] = user_accounts['user_number']
                     flash(f"Login successful, welcome-{user_accounts['user_name']}", "success")
                     return redirect(url_for('home.index'))                    
                 else:

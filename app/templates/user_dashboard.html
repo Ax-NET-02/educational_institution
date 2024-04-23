@@ -1,0 +1,160 @@
+{% extends "base.html" %}
+
+{% block title %}{{ session['user_name'] }}{% endblock %}
+
+{% block link %}rel="shortcut icon" href="{{ session['user_img'] }}"
+type="image/x-icon"{% endblock %}
+
+{% block head %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/course.css') }}">
+{% endblock %}
+
+{% block body %}
+<main>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="personal-card text-left">
+                    <div class="image-container">
+                        <!-- change new path -->
+                        <img src="{{ session['user_img'] }}" alt="Profile Picture" class="profile-picture">
+                        <div class="horizontal-bar">
+                            <i class="bi bi-calendar-check" style="color: white"></i>
+                            <span style="font-family: Impact; color: white">EDUCATIONAL</span>
+                        </div>
+                    </div>
+                    <!-- Use Jinja -->
+                    <h3 class="mt-3 mb-4 text-center" id="username">{{ session['user_name'] }}</h3>
+                    <ul class="list-unstyled">
+                        <li><i class="bi bi-key"></i><strong>Role Info: </strong><span id="role">{{ session['permission_name'] }}</span></li>
+                        <li><i class="bi bi-envelope"></i> <strong>Email: </strong><span id="email">{{ session['user_mail'] }}</span></li>
+                        <li><i class="bi bi-telephone"></i> <strong>Phone: </strong><span id="phone">{{ session['user_phone'] }}</span>
+                        </li>
+                    </ul>
+                    <div class="container d-flex justify-content-between">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password</a>
+                        <button type="submit" class="btn btn-danger"><a href=""
+                                class="text-decoration-none text-white">Edit</a></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-labelledby="changePasswordModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="" method="POST" name="changpw" id="changpw">
+                                <div class="mb-3">
+                                    <label for="oldPassword" class="form-label">Old Password</label>
+                                    <input type="password" class="form-control" id="oldPassword" name="oldPassword"
+                                        required onfocusout="validateOldPw()">
+                                    <div id="oldPasswordError" class="text-danger"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="newPassword" class="form-label">New Password</label>
+                                    <input type="password" class="form-control" id="newPassword" name="newPassword"
+                                        required pattern="(?=.*\d)(?=.*[a-z]).{8,}"
+                                        title="Must contain at least one number and one uppercase and lowercase letter,and at least 8 characters">
+                                    <div id="newPasswordError" class="text-danger"></div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirmPassword" class="form-label">Confirm Password</label>
+                                    <input type="password" class="form-control" id="confirmPassword"
+                                        name="confirmPassword" required onfocusout="validateNewMatch()">
+                                    <div id="confirmPasswordError" class="text-danger"></div>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+                                onclick="clearForm()">Close</button>
+                            <button type="submit" class="btn btn-dark" onclick="" id="myBtn" name="myBtn">Save
+                                Changes</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--css part -->
+    <style>
+        /* 共同样式 */
+        .personal-card {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        /* 图片容器 */
+        .image-container {
+            position: relative;
+        }
+
+        /* 水平条 */
+        .horizontal-bar {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background-color: black;
+            z-index: 0;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        /* 用户头像 */
+        .profile-picture {
+            max-width: 100px;
+            height: auto;
+            border-radius: 50%;
+            z-index: 1;
+            top: 13px;
+            position: relative;
+            margin-left: auto;
+            margin-right: auto;
+            display: block;
+            border: 2px solid white;
+        }
+
+        /* 无序列表样式 */
+        .list-unstyled li {
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+            margin-bottom: 10px;
+        }
+
+        /* 编辑按钮样式 */
+        .edit-buttons {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            margin-top: 10px;
+        }
+
+        /* 编辑按钮中的按钮样式 */
+        .edit-buttons button {
+            margin-right: 10px;
+        }
+
+        /* 导航链接激活状态样式 */
+        .navbar-light .navbar-nav .nav-link.active,
+        .navbar-light .navbar-nav .show>.nav-link {
+            color: #ffffff;
+            background-color: #007bff;
+        }
+    </style>
+
+    <!--js part（need to change path-->
+    <script src="static/js/dashprofile.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</main>
+{% endblock %}
